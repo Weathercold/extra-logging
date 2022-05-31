@@ -2,10 +2,10 @@ name: example-clojure-mod
 displayName: "Clojure Mod Template"
 subtitle: "A mod template"
 description: "A Mindustry Clojure mod template."
-author: You
+author: Weathercold
 
-version: 0.1.0-SNAPSHOT
+version: 0.1.0
 minGameVersion: 136
 
-main: example.ExampleClojureMod
+main: example.CljLoader
 java: true
