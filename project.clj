@@ -6,15 +6,22 @@
 
   :repositories [["jitpack" "https://www.jitpack.io"]]
   :dependencies [[org.clojure/clojure "1.11.1"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "c4b4c2e15c"]
-                                       [com.github.Anuken.Arc/arc-core "e7c161da88"]]}}
+  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "b621383906"]
+                                       [com.github.Anuken.Arc/arc-core "b4b4709321"]]}}
 
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]
   :resource-paths ["assets"]
+  :jar-name "example-%s.zip"
+  :uberjar-name "example-%s-standalone.zip"
 
   :main nil
+  :javac-options ["-source" "8" "-target" "8" "-Xlint:-options"]
+
+  ;; Uncomment for AOT (default)
   :aot :all
   :omit-source true
-  :jar-name "example-%s.zip"
-  :uberjar-name "example-%s-standalone.zip")
+
+  ;; Uncomment for JIT
+  ;; :jar-exclusions [#"\.java"]
+  )

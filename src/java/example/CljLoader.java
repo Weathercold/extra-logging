@@ -3,9 +3,12 @@ package example;
 import arc.files.*;
 import arc.util.*;
 import clojure.java.api.*;
-import clojure.lang.*;
 import mindustry.mod.*;
 
+/**
+ * Initializes Clojure with the correct classloader.
+ * @author Weathercold
+ */
 public class CljLoader extends Mod{
     public static String ns = CljLoader.class.getPackageName() + ".core";
 
@@ -15,38 +18,40 @@ public class CljLoader extends Mod{
     }
 
     public CljLoader(){
-        IFn main = Clojure.var(ns, "main");
-        if(!(main instanceof Var.Unbound)) main.invoke();
+        try{Clojure.var(ns, "main").invoke();}
+        catch(Throwable ignored){}
     }
 
     @Override
     public void init(){
-        IFn init = Clojure.var(ns, "init");
-        if(!(init instanceof Var.Unbound)) init.invoke();
+        try{Clojure.var(ns, "init").invoke();}
+        catch(Throwable ignored){}
     }
 
     @Override
     public void loadContent(){
-        IFn loadContent = Clojure.var(ns, "loadContent");
-        if(!(loadContent instanceof Var.Unbound)) loadContent.invoke();
+        try{Clojure.var(ns, "loadContent").invoke();}
+        catch(Throwable ignored){}
     }
 
     @Override
     public void registerClientCommands(CommandHandler handler){
-        IFn registerClientCommands = Clojure.var(ns, "registerClientCommands");
-        if(!(registerClientCommands instanceof Var.Unbound)) registerClientCommands.invoke();
+        try{Clojure.var(ns, "registerClientCommands").invoke();}
+        catch(Throwable ignored){}
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler){
-        IFn registerServerCommands = Clojure.var(ns, "registerServerCommands");
-        if(!(registerServerCommands instanceof Var.Unbound)) registerServerCommands.invoke();
+        try{Clojure.var(ns, "registerServerCommands").invoke();}
+        catch(Throwable ignored){}
     }
 
     @Override
     public Fi getConfig(){
-        IFn getConfig = Clojure.var(ns, "getConfig");
-        if(!(getConfig instanceof Var.Unbound)) return (Fi)getConfig.invoke();
-        return super.getConfig();
+        try{
+            return (Fi)Clojure.var(ns, "getConfig").invoke();
+        }catch(IllegalStateException e){
+            return super.getConfig();
+        }
     }
 }
