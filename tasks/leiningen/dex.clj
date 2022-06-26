@@ -41,7 +41,8 @@
             out-name (jar/get-classified-jar-filename project :android)
             standalone-name (jar/get-jar-filename project :standalone)]
            ;; --min-api is 26 because d8 says that MethodHandle.invoke and
-           ;; MethodHandle.invokeExact are only supported starting with Android 8.
+           ;; MethodHandle.invokeExact are only supported
+           ;; starting with Android 8.
            (apply shell/sh (flatten ["d8" "--min-api" "26" "--lib" (find-android-jar)
                                      classpath standalone-name]))
            (io/copy (io/file standalone-name) (io/file out-name))

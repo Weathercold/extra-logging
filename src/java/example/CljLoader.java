@@ -30,26 +30,26 @@ public class CljLoader extends Mod{
 
     @Override
     public void loadContent(){
-        try{Clojure.var(ns, "loadContent").invoke();}
+        try{Clojure.var(ns, "load-content").invoke();}
         catch(Throwable ignored){}
     }
 
     @Override
     public void registerClientCommands(CommandHandler handler){
-        try{Clojure.var(ns, "registerClientCommands").invoke();}
+        try{Clojure.var(ns, "register-client-commands").invoke();}
         catch(Throwable ignored){}
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler){
-        try{Clojure.var(ns, "registerServerCommands").invoke();}
+        try{Clojure.var(ns, "register-server-commands").invoke();}
         catch(Throwable ignored){}
     }
 
     @Override
     public Fi getConfig(){
         try{
-            return (Fi)Clojure.var(ns, "getConfig").invoke();
+            return (Fi)Clojure.var(ns, "get-config").invoke();
         }catch(IllegalStateException e){
             return super.getConfig();
         }

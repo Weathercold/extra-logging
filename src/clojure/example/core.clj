@@ -11,13 +11,16 @@
                             (fn []
                               (let [dialog (BaseDialog. "frog")
                                     cont (.cont dialog)]
-                                (doto cont
-                                  (.add "behold")
-                                  .row
-                                  (.image (.find Core/atlas "frog")))
+                                (-> cont
+                                    (.add "behold")
+                                    .row)
+                                (-> cont
+                                    (.image (.find Core/atlas "example-clojure-mod-frog"))
+                                    (.pad 20)
+                                    .row)
                                 (doto dialog
-                                  .addCloseButton
-                                  .show))))))
+                                  (.button "I see" (.hide dialog)))
+                                  (.show dialog))))))
 
-(defn loadContent []
+(defn load-content []
   (Log/info "Loading some example content."))

@@ -45,8 +45,8 @@ project is and do the following:
 
 Build output should be in `target/example-<version>-android.jar`.
 
-### Copy jar (TODO)
+### Copy jar to mods folder
 
-A convenient task `cp` is provided to copy jar to mindustry mods folder:
+A convenient task `copy` is provided to copy *the most recently built jar* to mindustry mods folder:
 
-    $ ./lein do uberjar, dex, cp
+    $ ./lein do uberjar, dex, copy
