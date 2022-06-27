@@ -1,0 +1,19 @@
+name: Commit Testing
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build project
+        run: |
+          export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
+          lein do uberjar, dex
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.event.repository.name }} in a box
+          path: |
+            target/example-*-android.jar
+            target/example-*-desktop.jar

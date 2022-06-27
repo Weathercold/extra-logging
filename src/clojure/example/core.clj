@@ -1,5 +1,5 @@
 (ns example.core
-  (:require [example.util.lambdas :refer :all])
+  (:use (example.util.lambdas))
   (:import (arc Core Events)
            (arc.util Log)
            (mindustry.game EventType$ClientLoadEvent)

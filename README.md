@@ -2,6 +2,12 @@
 
 Example Mindustry mod written in Clojure.
 
+## What to do after creating your repo
+
+1. Rename `src/{clojure,java}/example`
+2. Modify `assets/mod.hjson`
+3. Modify `project.clj`
+
 ## Tasks
 
 - JDK 8+
@@ -70,4 +76,4 @@ You can chain Leiningen tasks using `do`:
 
 ## Credits
 
-iarkn for the dex task
+iarkn for the dex task and various other things
