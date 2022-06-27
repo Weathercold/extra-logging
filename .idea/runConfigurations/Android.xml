@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Android" type="LeiningenRunConfiguration" factoryName="Leiningen">
+    <option name="aliases" />
+    <option name="execution" value="LEININGEN" />
+    <module name="example" />
+    <option name="profiles" />
+    <option name="PROGRAM_PARAMETERS" value="do uberjar, dex, copy, launch" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>

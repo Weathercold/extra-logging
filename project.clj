@@ -6,9 +6,9 @@
 
   :repositories [["jitpack" "https://www.jitpack.io"]]
   :dependencies [[org.clojure/clojure "1.11.1"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "b621383906"]
-                                       [com.github.Anuken.Arc/arc-core "b4b4709321"]
-                                       ;; For task linting, you can remove this
+  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "a17d3a5579"]
+                                       [com.github.Anuken.Arc/arc-core "da27a54ef9"]
+                                       ;; For tasks, you can remove this
                                        [leiningen "2.9.8"]]}}
 
   :source-paths ["src/clojure"]
