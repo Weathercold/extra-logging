@@ -8,7 +8,7 @@
   :dependencies [[org.clojure/clojure "1.11.1"]]
   :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "b621383906"]
                                        [com.github.Anuken.Arc/arc-core "b4b4709321"]
-                                       ; For task linting, you can remove this
+                                       ;; For task linting, you can remove this
                                        [leiningen "2.9.8"]]}}
 
   :source-paths ["src/clojure"]
