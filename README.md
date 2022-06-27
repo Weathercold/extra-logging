@@ -2,18 +2,21 @@
 
 Example Mindustry mod written in Clojure.
 
-## Building
+## Tasks
 
 - JDK 8+
 - Leiningen 2.0+ (if you don't have it the script will install it for you)
 
-### Desktop
+### Build for desktop
 
     $ ./lein uberjar
 
-The output should be in `target/example-<version>-standalone.jar`.
+The output should be `target/example-<version>-desktop.jar`.\
+**NOTE:** You most likely wouldn't want to use
+`target/example-<version>-nodeps.jar` since it doesn't include the
+dependencies.
 
-### Desktop + Android
+### Dexify for Android
 
 **NOTE:** This mod still doesn't work on Android.
 
@@ -47,6 +50,24 @@ Build output should be in `target/example-<version>-android.jar`.
 
 ### Copy jar to mods folder
 
-A convenient task `copy` is provided to copy *the most recently built jar* to mindustry mods folder:
+A convenient task `copy` is provided to copy *the most recently built jar* to
+mindustry mods folder:
 
-    $ ./lein do uberjar, dex, copy
+    $ ./lein copy
+
+### Launch game for testing
+
+Set the environment variable `MINDUSTRY_JAR` to the path to the Mindustry jar,
+then run:
+
+    $ ./lein launch
+
+### Chain tasks
+
+You can chain Leiningen tasks using `do`:
+
+    $ ./lein do uberjar, dex, copy, launch
+
+## Credits
+
+iarkn for the dex task

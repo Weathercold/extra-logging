@@ -1,5 +1,5 @@
 (ns example.core
-  (:require [example.util.lambdas :as lambdas])
+  (:require [example.util.lambdas :refer :all])
   (:import (arc Core Events)
            (arc.util Log)
            (mindustry.game EventType$ClientLoadEvent)
@@ -9,7 +9,7 @@
   (Log/info "Loaded ExampleClojureMod constructor.")
   (Events/on
     EventType$ClientLoadEvent
-    (lambdas/cons1
+    (cons1
       (fn [_]
         (let [dialog (BaseDialog. "frog")
               cont (.cont dialog)]
@@ -19,7 +19,7 @@
             (-> (.image (.find Core/atlas "example-clojure-mod-frog"))
                 (.pad 20.)
                 .row)
-            (-> (.button "I see" (lambdas/runnable #(.hide dialog)))
+            (-> (.button "I see" (runnable #(.hide dialog)))
                 (.size 100., 50.)))
           (.show dialog))))))
 
