@@ -14,7 +14,7 @@
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]
   :resource-paths ["assets"]
-  :jar-name "example-%s-nodeps.jar"
+  ;; Do not set :jar-name as it will break jar resolution in tasks
   :uberjar-name "example-%s-desktop.jar"
 
   :main nil

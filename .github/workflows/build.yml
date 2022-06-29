@@ -15,5 +15,5 @@ jobs:
         with:
           name: ${{ github.event.repository.name }} in a box
           path: |
-            target/example-*-android.jar
-            target/example-*-desktop.jar
+            target/*-android.jar
+            target/*-desktop.jar
