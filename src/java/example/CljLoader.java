@@ -18,32 +18,42 @@ public class CljLoader extends Mod{
     }
 
     public CljLoader(){
-        try{Clojure.var(ns, "main").invoke();}
-        catch(Throwable ignored){}
+        try{
+            Clojure.var(ns, "main").invoke();
+        }catch(Throwable ignored){
+        }
     }
 
     @Override
     public void init(){
-        try{Clojure.var(ns, "init").invoke();}
-        catch(Throwable ignored){}
+        try{
+            Clojure.var(ns, "init").invoke();
+        }catch(Throwable ignored){
+        }
     }
 
     @Override
     public void loadContent(){
-        try{Clojure.var(ns, "load-content").invoke();}
-        catch(Throwable ignored){}
+        try{
+            Clojure.var(ns, "load-content").invoke();
+        }catch(Throwable ignored){
+        }
     }
 
     @Override
     public void registerClientCommands(CommandHandler handler){
-        try{Clojure.var(ns, "register-client-commands").invoke();}
-        catch(Throwable ignored){}
+        try{
+            Clojure.var(ns, "register-client-commands").invoke();
+        }catch(Throwable ignored){
+        }
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler){
-        try{Clojure.var(ns, "register-server-commands").invoke();}
-        catch(Throwable ignored){}
+        try{
+            Clojure.var(ns, "register-server-commands").invoke();
+        }catch(Throwable ignored){
+        }
     }
 
     @Override

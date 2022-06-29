@@ -72,17 +72,17 @@ then run:
 **TIP:** If you use IntelliJ IDEA, you can set environment variables in run
 configurations (see below).
 
-### Chain tasks
+### Aliases
 
-You can chain Leiningen tasks using `do`:
-
-    $ ./lein do uberjar, dex, copy, launch
+- `uberdex` = `do uberjar, dex`
+- `run-jar` = `do uberjar, copy, launch`
+- `run-dex` = `do uberjar, dex, copy, launch`
 
 ## IntelliJ IDEA Run Configurations
 
 Two run configurations are provided:
-- Desktop `./lein uberjar, copy, launch`
-- Android `./lein uberjar, dex, copy, launch`
+- Desktop `./lein run-jar`
+- Android `./lein run-dex`
 
 ## GitHub Workflow
 
@@ -91,7 +91,7 @@ A dexified jar and a plain one are generated.[1]
 
 ## Credits
 
-iarkn for the dex task and various other things
+iarkn for the dex task, GitHub workflow and various other things
 
 ---
 

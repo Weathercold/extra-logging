@@ -11,15 +11,18 @@
                                        ;; For tasks, you can remove this
                                        [leiningen "2.9.8"]]}}
 
+  :main nil
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]
   :resource-paths ["assets"]
   ;; Do not set :jar-name as it will break jar resolution in tasks
   :uberjar-name "example-%s-desktop.jar"
 
-  :main nil
-  :javac-options ["-source" "8" "-target" "8" "-Xlint:-options"]
   :min-lein-version "2.0.0"
+  :javac-options ["-source" "8" "-target" "8" "-Xlint:-options"]
+  :aliases {"uberdex" ["do" "uberjar," "dex"]
+            "build-run" ["do" "uberjar," "copy," "launch"]
+            "dex-run" ["do" "uberjar," "dex," "copy," "launch"]}
 
   ;; Uncomment for AOT (default)
   :aot :all

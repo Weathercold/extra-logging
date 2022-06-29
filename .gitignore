@@ -14,5 +14,7 @@ pom.xml.asc
 /.clj-kondo
 /.idea/*
 !/.idea/runConfigurations
+!/.idea/clojure_compiler.xml
+!/.idea/jarRepositories.xml
 /.lsp
 /.calva
