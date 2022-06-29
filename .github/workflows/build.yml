@@ -1,4 +1,4 @@
-name: Commit Testing
+name: Build Project
 on: [push, pull_request]
 
 jobs:
@@ -10,18 +10,15 @@ jobs:
         run: |
           export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
           lein do uberjar, dex
-      - name: Unpack jars
-        run: |
-          cd target
-          unzip *-android.jar -d android
-          unzip *-desktop.jar -d desktop
-      - name: Upload android build
-        uses: actions/upload-artifact@v3
-        with:
-          name: Android build in a zip
-          path: target/android/*
       - name: Upload desktop build
         uses: actions/upload-artifact@v3
         with:
           name: Desktop build in a zip
-          path: target/desktop/*
+          path: target/*-desktop.jar
+      - name: Unpack jars
+        run: unzip target/*-android.jar -d target/android
+      - name: Upload android build
+        uses: actions/upload-artifact@v3
+        with:
+          name: Android build as a zip
+          path: target/android/*

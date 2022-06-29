@@ -7,6 +7,7 @@ Example Mindustry mod written in Clojure.
 1. Rename `src/{clojure,java}/example`
 2. Modify `assets/mod.hjson`
 3. Modify `project.clj`
+4. Set `MINDUSTRY_JAR` environment variable for the launch task
 
 ## Tasks
 
@@ -68,12 +69,33 @@ then run:
 
     $ ./lein launch
 
+**TIP:** If you use IntelliJ IDEA, you can set environment variables in run
+configurations (see below).
+
 ### Chain tasks
 
 You can chain Leiningen tasks using `do`:
 
     $ ./lein do uberjar, dex, copy, launch
 
+## IntelliJ IDEA Run Configurations
+
+Two run configurations are provided:
+- Desktop `./lein uberjar, copy, launch`
+- Android `./lein uberjar, dex, copy, launch`
+
+## GitHub Workflow
+
+A workflow automatically builds your project on commit or on pull request.
+A dexified jar and a plain one are generated.[1]
+
 ## Credits
 
 iarkn for the dex task and various other things
+
+---
+
+[1] Due to GitHub's limitation, jar files cannot be uploaded directly. I worked
+around this issue by extracting and uploading the files inside the jar, however
+the upload speed for a large amount of small files is extremely slow. For this
+reason a plain jar for testing is also uploaded, but it comes wrapped in a zip.
