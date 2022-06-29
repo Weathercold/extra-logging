@@ -10,10 +10,18 @@ jobs:
         run: |
           export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
           lein do uberjar, dex
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
+      - name: Unpack jars
+        run: |
+          cd target
+          unzip *-android.jar -d android
+          unzip *-desktop.jar -d desktop
+      - name: Upload android build
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.repository.name }} in a box
-          path: |
-            target/*-android.jar
-            target/*-desktop.jar
+          name: Android build in a zip
+          path: target/android/*
+      - name: Upload desktop build
+        uses: actions/upload-artifact@v3
+        with:
+          name: Desktop build in a zip
+          path: target/desktop/*
