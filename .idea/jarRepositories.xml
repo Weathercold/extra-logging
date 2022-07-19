@@ -3,13 +3,18 @@
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
       <option name="id" value="central" />
-      <option name="name" value="Maven Central repository" />
+      <option name="name" value="Maven Central" />
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="6fad5860-b28b-46ef-a592-7ea737d44fcc" />
-      <option name="name" value="6fad5860-b28b-46ef-a592-7ea737d44fcc" />
+      <option name="id" value="jitpack" />
+      <option name="name" value="Jitpack" />
       <option name="url" value="https://www.jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="clojars" />
+      <option name="name" value="Clojars" />
+      <option name="url" value="https://repo.clojars.org" />
     </remote-repository>
   </component>
 </project>
