@@ -9,7 +9,7 @@ jobs:
       - name: Build project
         run: |
           export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
-          lein do uberjar, dex
+          lein uberdex
       - name: Upload desktop build
         uses: actions/upload-artifact@v3
         with:

@@ -6,8 +6,8 @@
 
   :repositories [["jitpack" "https://www.jitpack.io"]]
   :dependencies [[org.clojure/clojure "1.11.1"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "a17d3a5579"]
-                                       [com.github.Anuken.Arc/arc-core "da27a54ef9"]
+  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "0243dc7f12"]
+                                       [com.github.Anuken.Arc/arc-core "47925a7b91"]
                                        ;; For tasks, you can remove this
                                        [leiningen "2.9.8"]]}}
 
