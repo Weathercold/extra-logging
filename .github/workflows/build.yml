@@ -13,12 +13,10 @@ jobs:
       - name: Upload desktop build
         uses: actions/upload-artifact@v3
         with:
-          name: Desktop build in a zip
+          name: Desktop build in a box
           path: target/*-desktop.jar
-      - name: Unpack jars
-        run: unzip target/*-android.jar -d target/android
       - name: Upload android build
         uses: actions/upload-artifact@v3
         with:
-          name: Android build as a zip
-          path: target/android/*
+          name: Android build in a box
+          path: target/*-android.jar
