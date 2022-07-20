@@ -29,7 +29,7 @@
 
 (defn boolc [f]
   (reify Boolc
-    (get [_ ^Boolean a] (f a))))
+    (get [_ a] (f a))))
 
 (defn cons1 [f]
   (reify Cons
