@@ -5,7 +5,7 @@ description: "A Mindustry Clojure mod template."
 author: Weathercold
 
 version: 0.1.0
-minGameVersion: 136
+minGameVersion: 137
 
 main: example.CljLoader
 java: true
