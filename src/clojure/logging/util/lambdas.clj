@@ -1,4 +1,4 @@
-(ns example.util.lambdas
+(ns logging.util.lambdas
   (:import (arc.func Cons Cons2 Cons3 Cons4)))
 
 (defn runnable [f]
