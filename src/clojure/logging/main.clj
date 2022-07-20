@@ -1,27 +1,8 @@
 (ns logging.main
-    (:require [logging.util.lambdas :refer [cons1 runnable]])
-    (:import (arc Core Events)
-     (arc.util CommandHandler Log)
-     (mindustry.game EventType$ClientLoadEvent)
-     (mindustry.ui.dialogs BaseDialog)))
+    (:import (arc.util CommandHandler Log)))
 
 (defn main []
-  (Log/info "Creating example mod.")
-  (Events/on
-   EventType$ClientLoadEvent
-   (cons1
-    (fn [_]
-        (let [dialog (BaseDialog. "frog")
-              cont (.cont dialog)]
-             (doto cont
-                   (-> (.add "behold")
-                       .row)
-                   (-> (.image (.find Core/atlas "example-clojure-mod-frog"))
-                       (.pad 20.)
-                       .row)
-                   (-> (.button "I see" (runnable #(.hide dialog)))
-                       (.size 100., 50.)))
-             (.show dialog))))))
+      (Log/info "Creating example mod."))
 
 (defn init []
       (Log/info "Initializing mod."))
