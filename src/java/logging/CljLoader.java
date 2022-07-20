@@ -1,4 +1,4 @@
-package example;
+package logging;
 
 import arc.files.Fi;
 import arc.util.CommandHandler;

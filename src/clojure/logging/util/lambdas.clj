@@ -1,4 +1,4 @@
-(ns example.util.lambdas
+(ns logging.util.lambdas
   "Wrapper functions that construct objects that implement arc.func.* ."
   (:import (arc.func Boolc Boolf Boolf2 Boolf3 Boolp
                      Cons Cons2 Cons3 Cons4 ConsT

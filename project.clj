@@ -1,6 +1,6 @@
-(defproject example "0.1.0-SHAPSHOT"
-  :description "Mindustry Clojure Mod Template"
-  :url "http://github.com/Weathercold/mindustry-clj-mod-template"
+(defproject extra-logging "0.1.0"
+  :description "Extra Logging"
+  :url "http://github.com/Weathercold/extra-logging"
   :license {:name "GPL-3.0-or-later"
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
