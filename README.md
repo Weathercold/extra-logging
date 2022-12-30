@@ -81,6 +81,7 @@ configurations (see below).
 ## IntelliJ IDEA Run Configurations
 
 Two run configurations are provided:
+
 - Desktop `./lein run-jar`
 - Android `./lein run-dex`
 
