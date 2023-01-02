@@ -11,19 +11,19 @@
 
 (def android-jar
   (delay
-    (if-let [plat-dir
-             (if-let [sdk-root (or (System/getenv "ANDROID_SDK_ROOT")
-                                   (System/getenv "ANDROID_HOME"))]
-               (->> (io/file sdk-root "platforms")
-                    .listFiles
-                    sort
-                    reverse
-                    (filter #(.exists (io/file % "android.jar")))
-                    first)
-               nil)]
-      (str (.getPath plat-dir) "/android.jar")
-      (main/abort "Could not find android.jar file, make sure that an Android"
-                  "SDK platform is installed."))))
+   (if-let [plat-dir
+            (if-let [sdk-root (or (System/getenv "ANDROID_SDK_ROOT")
+                                  (System/getenv "ANDROID_HOME"))]
+              (->> (io/file sdk-root "platforms")
+                   .listFiles
+                   sort
+                   reverse
+                   (filter #(.exists (io/file % "android.jar")))
+                   first)
+              nil)]
+     (str (.getPath plat-dir) "/android.jar")
+     (main/abort "Could not find android.jar file, make sure that an Android"
+                 "SDK platform is installed."))))
 
 (defn dex
   "Converts Java bytecode to DEX bytecode using d8.
@@ -33,8 +33,8 @@
   (let [scoped-profiles (set (project/pom-scope-profiles project :provided))
         default-profiles (set (project/expand-profile project :default))
         provided-profiles (remove
-                            (set/difference default-profiles scoped-profiles)
-                            (-> project meta :included-profiles))
+                           (set/difference default-profiles scoped-profiles)
+                           (-> project meta :included-profiles))
         project (->> (into [:uberjar] provided-profiles)
                      (project/merge-profiles project))
         classpath (for [cp (cp/get-classpath project)
@@ -50,7 +50,6 @@
                               "--lib" @android-jar
                               classpath
                               "--output" out-name
-                              standalone-name]))
-    ;; (shell/sh "jar" "-uf" out-name "classes.dex")
-    ;; (io/delete-file "classes.dex" true)
-    ))
+                              standalone-name]))))
+;; (shell/sh "jar" "-uf" out-name "classes.dex")
+;; (io/delete-file "classes.dex" true)

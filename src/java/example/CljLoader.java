@@ -40,14 +40,14 @@ public class CljLoader extends Mod {
     @Override
     public void registerClientCommands(CommandHandler handler) {
         try {
-            Clojure.var(ns, "register-client-commands").invoke();
+            Clojure.var(ns, "register-client-commands").invoke(handler);
         } catch (Throwable ignored) {}
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler) {
         try {
-            Clojure.var(ns, "register-server-commands").invoke();
+            Clojure.var(ns, "register-server-commands").invoke(handler);
         } catch (Throwable ignored) {}
     }
 
