@@ -1,4 +1,4 @@
-(ns example.core
+(ns example.main
   (:require [example.util.lambdas :refer [cons1 runnable]])
   (:import (arc Core Events)
            (arc.util CommandHandler Log)
@@ -19,7 +19,7 @@
           (-> (.image (.find Core/atlas "example-clojure-mod-frog"))
               (.pad 20.)
               .row)
-          (-> (.button "I see" ^Runnable (runnable #(.hide dialog)))
+          (-> (.button "I see" (runnable #(.hide dialog)))
               (.size 100., 50.)))
         (.show dialog))))))
 

@@ -1,52 +1,96 @@
 (ns example.util.lambdas
+  "Wrapper functions that construct objects that implement arc.func.* ."
   (:import (arc.func Boolc Boolf Boolf2 Boolf3 Boolp
                      Cons Cons2 Cons3 Cons4 ConsT
-                     Prov)))
+                     FloatFloatf Floatc Floatc2 Floatc4 Floatf Floatp
+                     Prov)
+           (mindustry.ui.dialogs SettingsMenuDialog$StringProcessor)))
 
-(defn prov [f]
+;; region Providers
+
+(defn prov ^Prov [f]
   (reify Prov
     (get [_] (f))))
 
-(defn boolp [f]
+(defn boolp ^Boolp [f]
   (reify Boolp
-    (get ^Boolean [_] (f))))
+    (get [_] (f))))
 
-(defn boolf1 [f]
+(defn boolf ^Boolf [f]
   (reify Boolf
-    (get ^Boolean [_ a] (f a))))
+    (get [_ a] (f a))))
 
-(defn boolf2 [f]
+(defn boolf2 ^Boolf2 [f]
   (reify Boolf2
-    (get ^Boolean [_ a b] (f a b))))
+    (get [_ a b] (f a b))))
 
-(defn boolf3 [f]
+(defn boolf3 ^Boolf3 [f]
   (reify Boolf3
-    (get ^Boolean [_ a b c] (f a b c))))
+    (get [_ a b c] (f a b c))))
 
-(defn runnable [f]
+(defn floatp ^Floatp [f]
+  (reify Floatp
+    (get [_] (f))))
+
+(defn floatf ^Floatf [f]
+  (reify Floatf
+    (get [_ a] (f a))))
+
+(defn floatffloatf ^FloatFloatf [f]
+  (reify FloatFloatf
+    (get [_ a] (f a))))
+
+(defn s-proc ^SettingsMenuDialog$StringProcessor [f]
+  (reify SettingsMenuDialog$StringProcessor
+    (get [_ a] (f a))))
+
+;; endregion
+
+(defn runnable ^Runnable [f]
   (reify Runnable
     (run [_] (f))))
 
-(defn boolc [f]
-  (reify Boolc
-    (get [_ a] (f a))))
+;; region Consumers
 
-(defn cons1 [f]
+(defn cons1 ^Cons [f]
   (reify Cons
     (get [_ a] (f a))))
 
-(defn cons2 [f]
+(defn cons2 ^Cons2 [f]
   (reify Cons2
     (get [_ a b] (f a b))))
 
-(defn cons3 [f]
+(defn cons3 ^Cons3 [f]
   (reify Cons3
     (get [_ a b c] (f a b c))))
 
-(defn cons4 [f]
+(defn cons4 ^Cons4 [f]
   (reify Cons4
     (get [_ a b c d] (f a b c d))))
 
-(defn const [f]
+(defn cons-th ^ConsT [f]
   (reify ConsT
     (get [_ a] (f a))))
+
+(defn boolc ^Boolc [f]
+  (reify Boolc
+    (get [_ a] (f a))))
+
+(defn floatc ^Floatc [f]
+  (reify Floatc
+    (get [_ a] (f a))))
+
+(defn floatc2 ^Floatc2 [f]
+  (reify Floatc2
+    (get [_ a b] (f a b))))
+
+(defn floatc4 ^Floatc4 [f]
+  (reify Floatc4
+    (get [_ a b c d] (f a b c d))))
+
+;; endregion
+
+;; Experimental
+(defmacro defrunnable [& body]
+  `(reify Runnable
+     (run [_] ~@body)))

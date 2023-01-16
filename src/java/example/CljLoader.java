@@ -10,7 +10,7 @@ import mindustry.mod.Mod;
  * @author Weathercold
  */
 public class CljLoader extends Mod {
-    public static final String ns = CljLoader.class.getPackageName() + ".core";
+    public static final String ns = CljLoader.class.getPackageName() + ".main";
 
     static {
         Thread.currentThread().setContextClassLoader(CljLoader.class.getClassLoader());

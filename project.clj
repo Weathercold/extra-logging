@@ -1,6 +1,6 @@
-(defproject example "0.1.0"
+(defproject example "0.1.0-SHAPSHOT"
   :description "Mindustry Clojure Mod Template"
-  :url "http://github.com/Weathercold/ExampleClojureModTemplate"
+  :url "http://github.com/Weathercold/mindustry-clj-mod-template"
   :license {:name "GPL-3.0-or-later"
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
@@ -8,7 +8,7 @@
   :dependencies [[org.clojure/clojure "1.11.1"]]
   :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "038595255c2b39e5557f01965e6e787693abb672"]
                                        [com.github.Anuken.Arc/arc-core "b32576ca09044bf69585eef6951ea81417a64542"]
-                                       ;; For tasks, you can remove this
+                                       ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
   :main nil
@@ -26,8 +26,7 @@
 
   ;; Uncomment for AOT (default)
   :aot :all
-  :omit-source true
+  :omit-source true)
 
   ;; Uncomment for JIT
   ;; :jar-exclusions [#"\.java"]
-  )
