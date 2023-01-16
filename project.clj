@@ -6,8 +6,8 @@
 
   :repositories [["jitpack" "https://www.jitpack.io"]]
   :dependencies [[org.clojure/clojure "1.11.1"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "038595255c2b39e5557f01965e6e787693abb672"]
-                                       [com.github.Anuken.Arc/arc-core "b32576ca09044bf69585eef6951ea81417a64542"]
+  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "v141.2"]
+                                       [com.github.Anuken.Arc/arc-core "v141.2"]
                                        ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
@@ -19,6 +19,7 @@
   :uberjar-name "example-%s-desktop.jar"
 
   :min-lein-version "2.0.0"
+  :global-vars {*warn-on-reflection* true}
   :javac-options ["-source" "8" "-target" "8" "-Xlint:-options"]
   :aliases {"uberdex" ["do" "uberjar," "dex"]
             "run-jar" ["do" "uberjar," "copy," "launch"]
@@ -28,5 +29,5 @@
   :aot :all
   :omit-source true)
 
-  ;; Uncomment for JIT
-  ;; :jar-exclusions [#"\.java"]
+;; Uncomment for JIT
+;; :jar-exclusions [#"\.java"]
