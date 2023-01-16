@@ -4,8 +4,8 @@ subtitle: "Debugging utilities and QoLs"
 description: "Adds more debugging features and improvements.\n\nFeatures:\n    - Sets log level to debug.\n    - Fully customizable log format w/ timestamps.\n    - Reenables colored terminal for Windows and Android.\n    - Chat message translation.\n    - Various other QoL improvements.\n\nSee README.md for more information."
 author: Weathercold
 
-version: 0.1.0
-minGameVersion: 137
+version: 2.0.0
+minGameVersion: 140
 
 main: logging.CljLoader
 java: true

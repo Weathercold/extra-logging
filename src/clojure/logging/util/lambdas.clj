@@ -1,5 +1,7 @@
 (ns logging.util.lambdas
-  "Wrapper functions that construct objects that implement arc.func.* ."
+  "Wrapper functions that construct objects that implement arc.func.* .
+   Always use :refer when requiring this namespace.
+   Sorted by type, then arity."
   (:import (arc.func Boolc Boolf Boolf2 Boolf3 Boolp
                      Cons Cons2 Cons3 Cons4 ConsT
                      FloatFloatf Floatc Floatc2 Floatc4 Floatf Floatp
@@ -94,3 +96,7 @@
 (defmacro defrunnable [& body]
   `(reify Runnable
      (run [_] ~@body)))
+
+(defmacro defcons [& body]
+  `(reify Cons
+     (get [a] ~@body)))

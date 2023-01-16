@@ -1,17 +1,17 @@
 (ns logging.main
-    (:import (arc.util CommandHandler Log)))
+  (:require [logging.core.settings]
+            [logging.core.translating :as transl]
+            [logging.util.log :refer [debug]])
+  (:import (arc.util CommandHandler)))
 
-(defn main []
-      (Log/info "Creating example mod."))
+(defn main [] (debug "Creating mod"))
 
-(defn init []
-      (Log/info "Initializing mod."))
+(defn init [] (debug "Initializing"))
 
-(defn load-content []
-      (Log/info "Loading some example content."))
+(defn load-content [] (debug "Loading content"))
 
 (defn register-client-commands [^CommandHandler handler]
-      (Log/info "Registering client commands."))
+  (debug "Registering commands")
+  (transl/register-command handler))
 
-(defn register-server-commands [^CommandHandler handler]
-      (Log/info "Registering server commands."))
+(defn register-server-commands [^CommandHandler _] (debug "Registering commands"))

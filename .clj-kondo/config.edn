@@ -1,0 +1,1 @@
+{:lint-as {logging.core.setting/defsetting clojure.core/defonce}}

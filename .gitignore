@@ -11,10 +11,14 @@ pom.xml.asc
 .hgignore
 .hg/
 
-/.clj-kondo
+.cache
 /.idea/*
 !/.idea/runConfigurations
 !/.idea/clojure_compiler.xml
+!/.idea/discord.xml
+!/.idea/extra-logging.iml
 !/.idea/jarRepositories.xml
+!/.idea/misc.xml
+!/.idea/modules.xml
 /.lsp
 /.calva

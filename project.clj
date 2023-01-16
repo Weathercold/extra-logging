@@ -1,4 +1,4 @@
-(defproject extra-logging "0.1.0"
+(defproject extra-logging "2.0.0-SNAPSHOT"
   :description "Extra Logging"
   :url "http://github.com/Weathercold/extra-logging"
   :license {:name "GPL-3.0-or-later"
@@ -16,17 +16,20 @@
   :java-source-paths ["src/java"]
   :resource-paths ["assets"]
   ;; Do not set :jar-name as it will break jar resolution in tasks
-  :uberjar-name "example-%s-desktop.jar"
+  :uberjar-name "extra-logging-%s-desktop.jar"
 
   :min-lein-version "2.0.0"
+  :global-vars {*warn-on-reflection* true}
+  ;; https://clojure.org/reference/compilation#directlinking
+  :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
   :javac-options ["-source" "8" "-target" "8" "-Xlint:-options"]
   :aliases {"uberdex" ["do" "uberjar," "dex"]
             "run-jar" ["do" "uberjar," "copy," "launch"]
             "run-dex" ["do" "uberjar," "dex," "copy," "launch"]}
 
   ;; Uncomment for AOT (default)
-  :aot :all
-  :omit-source true)
+  ;;:aot :all
+  ;;:omit-source true)
 
   ;; Uncomment for JIT
-  ;; :jar-exclusions [#"\.java"]
+  :jar-exclusions [#"\.java"])
