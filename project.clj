@@ -6,8 +6,8 @@
 
   :repositories [["jitpack" "https://www.jitpack.io"]]
   :dependencies [[org.clojure/clojure "1.11.1"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "038595255c2b39e5557f01965e6e787693abb672"]
-                                       [com.github.Anuken.Arc/arc-core "b32576ca09044bf69585eef6951ea81417a64542"]
+  :profiles {:provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "v141.2"]
+                                       [com.github.Anuken.Arc/arc-core "v141.2"]
                                        ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
