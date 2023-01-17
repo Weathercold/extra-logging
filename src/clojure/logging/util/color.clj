@@ -70,6 +70,38 @@
       :back-yellow   "&by"
       :back-blue     "&bb"})
 
+(def ^:const color->tag
+  "Color keyword to color tag."
+  #::{:flush         ""
+      :reset         "[]"
+      :bold          ""
+      :italic        ""
+      :underline     ""
+
+      :black         "[black]"
+      :red           "[red]"
+      :green         "[green]"
+      :yellow        "[yellow]"
+      :blue          "[blue]"
+      :purple        "[purple]"
+      :cyan          "[cyan]"
+      :white         "[white]"
+
+      :light-black   "[gray]"
+      :light-red     "[rose]"
+      :light-green   "[lime]"
+      :light-yellow  "[highlight]"
+      :light-blue    "[sky]"
+      :light-magenta "[violet]"
+      :light-cyan    "[cyan]"
+      :light-white   "[lightgray]"
+
+      :back-default  "[]"
+      :back-red      ""
+      :back-green    ""
+      :back-yellow   ""
+      :back-blue     ""})
+
 (def tag->color
   "Color tag to color keyword."
   (let [bracketless-map
@@ -139,14 +171,7 @@
   "Color tags, i.e. special strings that affect in-game string color."
   (keys tag->color))
 
-(let [truncated-tags
-      ["" "[]" "" "" ""
-       "[black]" "[red]" "[green]" "[yellow]" "[blue]" "[purple]" "[cyan]" "[white]"
-       "[gray]" "[rose]" "[lime]" "[highlight]" "[sky]" "[violet]" "[cyan]" "[lightgray]"
-       "" "" "" "" ""]]
-  (def color->tag
-    "Color keyword to color tag."
-    (zipmap colors truncated-tags))
+(let [truncated-tags (vals color->tag)]
   (def escseq->tag
     "Terminal escape sequence to color tag."
     (zipmap escseqs truncated-tags))

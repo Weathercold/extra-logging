@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="BuildSystem">
     <option name="buildSystemId" value="LEININGEN" />
-    <option name="displayName" value="extra-logging:0.1.0" />
+    <option name="displayName" value="extra-logging:2.0.0-alpha" />
   </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -23,13 +23,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clj-commons/pomegranate:1.2.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:b32576ca09044bf69585eef6951ea81417a64542" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:b32576ca09" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:b32576ca09" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:b32576ca09" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:b32576ca09" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:b32576ca09" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.MindustryJitpack/core:038595255c2b39e5557f01965e6e787693abb672" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v141.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:d0d80da882" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:d0d80da882" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:d0d80da882" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:d0d80da882" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:d0d80da882" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.MindustryJitpack/core:v141.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken/rhino:73a812444ac388ac2d94013b5cadc8f70b7ea027" level="project" />
     <orderEntry type="library" name="Leiningen: com.hypirion/io:0.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
