@@ -47,11 +47,6 @@
     (get [_ a] (f a))))
 
 ;; endregion
-
-(defn runnable ^Runnable [f]
-  (reify Runnable
-    (run [_] (f))))
-
 ;; region Consumers
 
 (defn cons1 ^Cons [f]
@@ -93,10 +88,6 @@
 ;; endregion
 
 ;; Experimental
-(defmacro defrunnable [& body]
-  `(reify Runnable
-     (run [_] ~@body)))
-
 (defmacro defcons [& body]
   `(reify Cons
      (get [a] ~@body)))

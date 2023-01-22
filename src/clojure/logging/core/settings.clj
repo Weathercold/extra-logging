@@ -7,7 +7,7 @@
                           [log-handler :as log-h]
                           [setting :refer [set-setting]]
                           [translating :as transl])
-            (logging.util [lambdas :refer [cons1 runnable s-proc]]
+            (logging.util [lambdas :refer [cons1 s-proc]]
                           [log :as log]))
   (:import (arc Core Events)
            (arc.util Log Log$LogLevel)
@@ -76,4 +76,4 @@
            (cons1 (fn [_]
                     (doto (.-settings Vars/ui)
                       (.addCategory "@extra-logging.displayname" Icon/wrench (cons1 register))
-                      (.hidden (runnable refresh!))))))
+                      (.hidden refresh!)))))
