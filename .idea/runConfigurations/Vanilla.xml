@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Desktop [vanilla]" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="./lein run-jar" />
+  <configuration default="false" name="Vanilla" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="export MINDUSTRY_JAR=$PROJECT_DIR$/../Mindustry/desktop/build/libs/Mindustry.jar; lein run-dex" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />
@@ -9,7 +9,7 @@
     <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
     <option name="INTERPRETER_PATH" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
-    <option name="EXECUTE_IN_TERMINAL" value="true" />
+    <option name="EXECUTE_IN_TERMINAL" value="false" />
     <option name="EXECUTE_SCRIPT_FILE" value="false" />
     <envs>
       <env name="MINDUSTRY_JAR" value="$PROJECT_DIR$/../Mindustry/desktop/build/libs/Mindustry.jar" />

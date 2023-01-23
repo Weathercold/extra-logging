@@ -9,7 +9,7 @@
             [leiningen.core.project :as project]
             [leiningen.jar :as jar]))
 
-(def android-jar
+(def ^:private android-jar
   (delay
    (if-let [plat-dir
             (if-let [sdk-root (or (System/getenv "ANDROID_SDK_ROOT")
@@ -30,26 +30,28 @@
   The ANDROID_SDK_ROOT (or ANDROID_HOME as fallback) environment variable
   must be set and an Android SDK platform must be installed."
   [project]
-  (let [scoped-profiles (set (project/pom-scope-profiles project :provided))
-        default-profiles (set (project/expand-profile project :default))
+  (let [scoped-profiles   (set (project/pom-scope-profiles project :provided))
+        default-profiles  (set (project/expand-profile project :default))
         provided-profiles (remove
                            (set/difference default-profiles scoped-profiles)
                            (-> project meta :included-profiles))
-        project (->> (into [:uberjar] provided-profiles)
-                     (project/merge-profiles project))
-        classpath (for [cp (cp/get-classpath project)
-                        :when (.exists (io/file cp))]
-                    ["--classpath" cp])
-        out-name (jar/get-classified-jar-filename project :android)
-        standalone-name (jar/get-jar-filename project :standalone)]
-    ;; --min-api is 26 because d8 says that MethodHandle.invoke and
-    ;; MethodHandle.invokeExact are only supported
-    ;; starting with Android 8.
+        project           (->> (into [:uberjar] provided-profiles)
+                               (project/merge-profiles project))
+        classpath         (for [cp (cp/get-classpath project)
+                                :when (.exists (io/file cp))]
+                            ["--classpath" cp])
+        out-name          (jar/get-classified-jar-filename project :android)
+        standalone-name   (jar/get-jar-filename project :standalone)]
+    (println "Creating classes.dex ...")
     (apply shell/sh (flatten ["d8"
+                              ;; --min-api is 26 because d8 says that
+                              ;; MethodHandle.invoke and MethodHandle.invokeExact
+                              ;; are only supported starting with Android 8.
                               "--min-api" "26"
                               "--lib" @android-jar
                               classpath
-                              "--output" out-name
-                              standalone-name]))))
-;; (shell/sh "jar" "-uf" out-name "classes.dex")
-;; (io/delete-file "classes.dex" true)
+                              standalone-name]))
+    (println "Creating" out-name "...")
+    (shell/sh "cp" standalone-name out-name)
+    (shell/sh "jar" "-uf" out-name "classes.dex")
+    (io/delete-file "classes.dex" true)))

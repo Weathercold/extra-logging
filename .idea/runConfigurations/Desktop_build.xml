@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Desktop build" type="LeiningenRunConfiguration" factoryName="Leiningen" singleton="true">
+    <option name="aliases" />
+    <option name="execution" value="LEININGEN" />
+    <module name="extra-logging" />
+    <option name="profiles" />
+    <option name="PROGRAM_PARAMETERS" value="uberjar" />
+    <shortenClasspath name="ARGS_FILE" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -6,10 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v18
       - name: Build project
-        run: |
-          export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
-          lein uberdex
+        run: "nix develop -c lein uberdex"
       - name: Upload desktop build
         uses: actions/upload-artifact@v3
         with:
