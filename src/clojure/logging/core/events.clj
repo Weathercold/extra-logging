@@ -11,7 +11,7 @@
   (try (Class/forName
         (if (str/includes? s ".") s (str "mindustry.game.EventType$" s)))
        (catch Exception e
-         ;; FIXME: ugh side-effect inside transaction
+         ;; FIXME: ugh side effect inside transaction
          (err (str "Cannot get event class with name " s) e))))
 
 (defn- trace [o]
@@ -38,5 +38,7 @@
         (map str->event)
         (remove nil?)))
 
-(when @enable (run! (fn [c] (Events/on c (cons1 #(log @log-level (trace %)))))
-                    @listening-events))
+(defn -main []
+  (when @enable
+    (run! (fn [c] (Events/on c (cons1 #(log @log-level (trace %)))))
+          @listening-events)))

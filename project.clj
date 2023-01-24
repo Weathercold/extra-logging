@@ -28,8 +28,8 @@
             "run-dex" ["do" "uberjar," "dex," "copy," "launch"]}
 
   ;; Uncomment for AOT (default)
-  ;;:aot :all
-  ;;:omit-source true)
+  :aot :all
+  :omit-source true)
 
   ;; Uncomment for JIT
-  :jar-exclusions [#"\.java"])
+  ;;:jar-exclusions [#"\.java"])

@@ -19,42 +19,42 @@ public class CljLoader extends Mod {
 
     public CljLoader() {
         try {
-            Clojure.var(ns, "main").invoke();
+            Clojure.var(ns, "-main").invoke();
         } catch (Throwable ignored) {}
     }
 
     @Override
     public void init() {
         try {
-            Clojure.var(ns, "init").invoke();
+            Clojure.var(ns, "-init").invoke();
         } catch (Throwable ignored) {}
     }
 
     @Override
     public void loadContent() {
         try {
-            Clojure.var(ns, "load-content").invoke();
+            Clojure.var(ns, "-load-content").invoke();
         } catch (Throwable ignored) {}
     }
 
     @Override
     public void registerClientCommands(CommandHandler handler) {
         try {
-            Clojure.var(ns, "register-client-commands").invoke(handler);
+            Clojure.var(ns, "-register-client-commands").invoke(handler);
         } catch (Throwable ignored) {}
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler) {
         try {
-            Clojure.var(ns, "register-server-commands").invoke(handler);
+            Clojure.var(ns, "-register-server-commands").invoke(handler);
         } catch (Throwable ignored) {}
     }
 
     @Override
     public Fi getConfig() {
         try {
-            return (Fi) Clojure.var(ns, "get-config").invoke();
+            return (Fi) Clojure.var(ns, "-get-config").invoke();
         } catch (IllegalStateException e) {
             return super.getConfig();
         }

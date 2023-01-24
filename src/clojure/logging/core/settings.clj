@@ -9,11 +9,10 @@
                           [translating :as transl])
             (logging.util [lambdas :refer [cons1 s-proc]]
                           [log :as log]))
-  (:import (arc Core Events)
+  (:import (arc Core)
            (arc.util Log Log$LogLevel)
            (logging.core.setting Setting)
            (mindustry Vars)
-           (mindustry.game EventType$ClientLoadEvent)
            (mindustry.gen Icon)
            (mindustry.ui.dialogs SettingsMenuDialog$SettingsTable
                                  SettingsMenuDialog$SettingsTable$Setting)))
@@ -57,23 +56,23 @@
 
 (defn refresh! []
   (dosync
-   (set-setting log/enable-meta-debugging)
-   (set-setting log/meta-color)
+   (run! set-setting [log/enable-meta-debugging
+                      log/meta-color
 
-   (set-setting log-h/log-level)
-   (set-setting log-h/colored-terminal)
-   (set-setting log-h/terminal-format)
-   (set-setting log-h/console-format)
-   (set-setting log-h/time-formatter)
+                      log-h/log-level
+                      log-h/colored-terminal
+                      log-h/terminal-format
+                      log-h/console-format
+                      log-h/time-formatter
 
-   (set-setting events/enable)
-   (set-setting events/log-level)
+                      events/enable
+                      events/log-level
 
-   (set-setting transl/enable-translation))
+                      transl/enable-translation]))
   (set! Log/level @log-h/log-level))
 
-(Events/on EventType$ClientLoadEvent
-           (cons1 (fn [_]
-                    (doto (.-settings Vars/ui)
-                      (.addCategory "@extra-logging.displayname" Icon/wrench (cons1 register))
-                      (.hidden refresh!)))))
+(defn -init []
+  (when-not Vars/headless
+    (doto (.-settings Vars/ui)
+      (.addCategory "@extra-logging.displayname" Icon/wrench (cons1 register))
+      (.hidden refresh!))))

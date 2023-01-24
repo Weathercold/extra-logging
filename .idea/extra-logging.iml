@@ -14,7 +14,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/clojure" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tasks" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/.clj-kondo/.cache" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/codeStyles" />
