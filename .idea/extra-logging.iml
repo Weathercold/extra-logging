@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="BuildSystem">
     <option name="buildSystemId" value="LEININGEN" />
-    <option name="displayName" value="extra-logging:2.0.0-alpha" />
+    <option name="displayName" value="extra-logging:2.0.0-beta" />
   </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -35,12 +35,13 @@
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Leiningen: commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Leiningen: http-kit:2.7.0-alpha1" level="project" />
     <orderEntry type="library" name="Leiningen: javax.inject:1" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen-core:2.10.0" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen:2.10.0" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/parsley:0.9.3" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/regex:1.1.0" level="project" />
-    <orderEntry type="library" name="Leiningen: nrepl:1.0.0" level="project" />
+    <orderEntry type="library" name="Leiningen: nrepl:1.1.0-alpha1" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.commons/commons-lang3:3.8.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpcore:4.4.15" level="project" />
@@ -65,6 +66,7 @@
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.11.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.62" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.codec:0.1.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.json:2.4.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.xml:0.2.0-alpha6" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.3.218" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
@@ -72,6 +74,7 @@
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-interpolation:1.25" level="project" />
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-utils:3.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.flatland/classlojure:0.7.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.flatland/ordered:1.15.10" level="project" />
     <orderEntry type="library" name="Leiningen: org.lz4/lz4-java:1.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.nrepl/incomplete:0.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.slf4j/jcl-over-slf4j:1.7.32" level="project" />

@@ -14,10 +14,10 @@
     let
       android-sdk = android.sdk.x86_64-linux (sdkPkgs: with sdkPkgs; [
         cmdline-tools-latest
-        build-tools-32-0-0
+        build-tools-33-0-1
         emulator
-        # platform-tools
-        platforms-android-32
+        platform-tools
+        platforms-android-33
       ]);
     in
     {
@@ -31,7 +31,9 @@
         shellHook = ''
           export JAVA_HOME=${temurin-bin} \
                  ANDROID_SDK_ROOT=${android-sdk}/share/android-sdk \
-                 PATH=$JAVA_HOME/bin:$ANDROID_SDK_ROOT/build-tools/32.0.0:$PATH
+                 PATH=$JAVA_HOME/bin:$ANDROID_SDK_ROOT/build-tools/33.0.1:$PATH
+          mkdir ~/Android 2>/dev/null
+          ln -snf $ANDROID_SDK_ROOT ~/Android/Sdk
         '';
       };
     };

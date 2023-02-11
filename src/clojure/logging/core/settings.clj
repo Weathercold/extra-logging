@@ -3,10 +3,11 @@
    Note that although all the vars are thread-safe, this mod is largely
    single-threaded like the game itself, so thread-safety is not really a
    concern. (why did I use refs then)"
-  (:require (logging.core [events :as events]
-                          [log-handler :as log-h]
+  (:require (logging.core [events-log :as events-log]
+                          [log-handler :as log-handler]
+                          [repl :as repl]
                           [setting :refer [set-setting]]
-                          [translating :as transl])
+                          [translating :as tl])
             (logging.util [lambdas :refer [cons1 s-proc]]
                           [log :as log]))
   (:import (arc Core)
@@ -17,14 +18,17 @@
            (mindustry.ui.dialogs SettingsMenuDialog$SettingsTable
                                  SettingsMenuDialog$SettingsTable$Setting)))
 
+(defn- category ^SettingsMenuDialog$SettingsTable$Setting [s]
+  (proxy [SettingsMenuDialog$SettingsTable$Setting] [s]
+    (add [^SettingsMenuDialog$SettingsTable st]
+      (doto st
+        (.. (add "") row)
+        (.add (str "[accent] " (.get Core/bundle (str "category." s))))
+        .row))))
+
 (defn- register [^SettingsMenuDialog$SettingsTable st]
   (letfn [(add-category [s]
-            (.pref st (proxy [SettingsMenuDialog$SettingsTable$Setting] [s]
-                        (add [^SettingsMenuDialog$SettingsTable st]
-                          (doto st
-                            (.. (add "") row)
-                            (.add (str "[accent] " (.get Core/bundle (str "category." s))))
-                            .row)))))
+            (.pref st (category s)))
           (check-pref [^Setting {:keys [setting default]}]
             (.checkPref st setting default))
           (slider-pref [^Setting {:keys [setting default]} mn mx sproc]
@@ -38,38 +42,48 @@
     (text-pref log/meta-color)
 
     (add-category "extra-logging")
-    (slider-pref log-h/log-level 0 4
+    (slider-pref log-handler/log-level 0 4
                  (s-proc #(.name ^Enum (nth (Log$LogLevel/values) %))))
-    (check-pref log-h/colored-terminal)
-    (area-pref log-h/terminal-format)
-    (area-pref log-h/console-format)
-    (text-pref log-h/time-formatter)
+    (check-pref log-handler/colored-terminal)
+    (area-pref log-handler/terminal-format)
+    (area-pref log-handler/console-format)
+    (text-pref log-handler/time-formatter)
+
+    (add-category "extra-repl")
+    (check-pref repl/enable)
+    (text-pref repl/address)
+    (text-pref repl/port)
 
     (add-category "extra-eventlogging")
-    (check-pref events/enable)
-    (slider-pref events/log-level 0 4
+    (check-pref events-log/enable)
+    (slider-pref events-log/log-level 0 4
                  (s-proc #(.name ^Enum (nth (Log$LogLevel/values) %))))
-    (area-pref events/listening-events)
+    (area-pref events-log/listening-events)
 
     (add-category "extra-translation")
-    (check-pref transl/enable-translation)))
+    (check-pref tl/enable-translation)))
 
 (defn refresh! []
   (dosync
-   (run! set-setting [log/enable-meta-debugging
-                      log/meta-color
+   (run! set-setting
+         [log/enable-meta-debugging
+          log/meta-color
 
-                      log-h/log-level
-                      log-h/colored-terminal
-                      log-h/terminal-format
-                      log-h/console-format
-                      log-h/time-formatter
+          log-handler/log-level
+          log-handler/colored-terminal
+          log-handler/terminal-format
+          log-handler/console-format
+          log-handler/time-formatter
 
-                      events/enable
-                      events/log-level
+          repl/enable
+          repl/address
+          repl/port
 
-                      transl/enable-translation]))
-  (set! Log/level @log-h/log-level))
+          events-log/enable
+          events-log/log-level
+
+          tl/enable-translation]))
+  (set! Log/level @log-handler/log-level))
 
 (defn -init []
   (when-not Vars/headless

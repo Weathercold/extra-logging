@@ -10,7 +10,7 @@
            (java.time LocalTime)
            (java.time.format DateTimeFormatter)
            (mindustry Vars)
-           (mindustry.game EventType$ClientLoadEvent)))
+           (mindustry.game EventType$ClientLoadEvent EventType$FileTreeInitEvent)))
 
 (def level->code (zipmap (Log$LogLevel/values)
                          ["&lc" "&lb" "&ly" "&lr" "&lw"]))
@@ -18,9 +18,9 @@
                         ["[green]" "[royal]" "[yellow]" "[scarlet]" "[lightgray]"]))
 (def level->icon (zipmap (Log$LogLevel/values)
                          ["D", "I", "W", "E", "/"]))
-
 (def client-loaded (ref false))
 (def log-buffer (ref [] :validator #(or (= @client-loaded false) (empty? %))))
+
 (defsetting log-level "extra-loglevel" 0 #(nth (Log$LogLevel/values) %))
 (defsetting colored-terminal "extra-coloredterminal" true)
 (defsetting terminal-format "extra-terminalformat" "&lw[$t]&fr &fb$L[$l]&fr $m&fr")
@@ -35,32 +35,35 @@
                        (cons1 (fn [_] (err "Time format invalid" e)))))
           DateTimeFormatter/ISO_LOCAL_TIME)))
 
-(defn -main []
-  (set! Log/logger
-        (reify Log$LogHandler
-          (log [_ lvl s]
-            (let [timestamp (.format ^DateTimeFormatter @time-formatter (LocalTime/now))
-                  term-msg  (-> @terminal-format
-                                (str/replace "$t" timestamp)
-                                (str/replace "$L" (level->code lvl))
-                                (str/replace "$l" (level->icon lvl))
-                                (str/replace "$m" s)
-                                (#(if @colored-terminal
-                                    (-> % color/str-code->escseq color/str-tag->escseq)
-                                    (color/remove-colors %))))
-                  cons-msg  (-> @console-format
-                                (str/replace "$t" timestamp)
-                                (str/replace "$L" (level->tag lvl))
-                                (str/replace "$l" (level->icon lvl))
-                                (str/replace "$m" s)
-                                color/str-escseq->tag
-                                color/str-code->tag)]
-              (println term-msg)
-              (when-not Vars/headless
-                (if @client-loaded
-                  (.. Vars/ui -consolefrag (addMessage cons-msg))
-                  (dosync (alter log-buffer conj cons-msg))))))))
+(def instance
+  (reify Log$LogHandler
+    (log [_ lvl s]
+      (let [timestamp (.format ^DateTimeFormatter @time-formatter (LocalTime/now))
+            term-msg  (-> @terminal-format
+                          (str/replace "$t" timestamp)
+                          (str/replace "$L" (level->code lvl))
+                          (str/replace "$l" (level->icon lvl))
+                          (str/replace "$m" s)
+                          (#(if @colored-terminal
+                              (-> % color/str-code->escseq color/str-tag->escseq)
+                              (color/remove-colors %))))
+            cons-msg  (-> @console-format
+                          (str/replace "$t" timestamp)
+                          (str/replace "$L" (level->tag lvl))
+                          (str/replace "$l" (level->icon lvl))
+                          (str/replace "$m" s)
+                          color/str-escseq->tag
+                          color/str-code->tag)]
+        (println term-msg)
+        (when-not Vars/headless
+          (if @client-loaded
+            (.. Vars/ui -consolefrag (addMessage cons-msg))
+            (dosync (alter log-buffer conj cons-msg))))))))
 
+(defn -main []
+  (set! Log/logger instance)
+  (Events/on EventType$FileTreeInitEvent
+             (cons1 (fn [_] (set! Log/logger instance))))
   (Events/on EventType$ClientLoadEvent
              (cons1 (fn [_]
                       (run! #(.. Vars/ui -consolefrag (addMessage %))

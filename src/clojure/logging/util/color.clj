@@ -4,39 +4,42 @@
             [clojure.string :as str])
   (:import (java.util.regex Pattern)))
 
+;; TODO: Add true color support
+;; https://stackoverflow.com/a/4842446
+
 ;; region Data
 
 (def ^:const color->escseq
   "Color keyword to terminal escape sequence."
   #::{:flush         "\033[H\033[2J"
-      :reset         "\u001B[0m"
-      :bold          "\u001B[1m"
-      :italic        "\u001B[3m"
-      :underline     "\u001B[4m"
+      :reset         "\033[0m"
+      :bold          "\033[1m"
+      :italic        "\033[3m"
+      :underline     "\033[4m"
 
-      :black         "\u001B[30m"
-      :red           "\u001B[31m"
-      :green         "\u001B[32m"
-      :yellow        "\u001B[33m"
-      :blue          "\u001B[34m"
-      :purple        "\u001B[35m"
-      :cyan          "\u001B[36m"
-      :white         "\u001B[37m"
+      :black         "\033[30m"
+      :red           "\033[31m"
+      :green         "\033[32m"
+      :yellow        "\033[33m"
+      :blue          "\033[34m"
+      :purple        "\033[35m"
+      :cyan          "\033[36m"
+      :white         "\033[37m"
 
-      :light-black   "\u001b[90m"
-      :light-red     "\u001B[91m"
-      :light-green   "\u001B[92m"
-      :light-yellow  "\u001B[93m"
-      :light-blue    "\u001B[94m"
-      :light-magenta "\u001B[95m" ; Yes it's magenta, not purple, in arc.util.ColorCodes
-      :light-cyan    "\u001B[96m"
-      :light-white   "\u001b[97m"
+      :light-black   "\033[90m"
+      :light-red     "\033[91m"
+      :light-green   "\033[92m"
+      :light-yellow  "\033[93m"
+      :light-blue    "\033[94m"
+      :light-magenta "\033[95m" ; Yes it's magenta, not purple, in arc.util.ColorCodes
+      :light-cyan    "\033[96m"
+      :light-white   "\033[97m"
 
-      :back-default  "\u001B[49m"
-      :back-red      "\u001B[41m"
-      :back-green    "\u001B[42m"
-      :back-yellow   "\u001B[43m"
-      :back-blue     "\u001B[44m"})
+      :back-default  "\033[49m"
+      :back-red      "\033[41m"
+      :back-green    "\033[42m"
+      :back-yellow   "\033[43m"
+      :back-blue     "\033[44m"})
 
 (def ^:const color->code
   "Color keyword to color code."
