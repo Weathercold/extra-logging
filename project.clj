@@ -1,4 +1,4 @@
-(defproject extra-logging "2.0.0-beta"
+(defproject extra-logging "2.0.0-gamma"
   :description "Extra Logging"
   :url "http://github.com/Weathercold/extra-logging"
   :license {:name "GPL-3.0-or-later"

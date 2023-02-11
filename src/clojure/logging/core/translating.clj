@@ -8,7 +8,7 @@
             (logging.util [color :as color]
                           [lambdas :refer [command-runner cons1]]
                           [log :refer [info]]
-                          [macros :refer [if-let']])
+                          [macros :refer [if-let' when-let']])
             [logging.vars :refer [is-foo]])
   (:import (arc Core Events)
            (arc.graphics Color)
@@ -60,15 +60,16 @@
     (Events/on
      (Class/forName "mindustry.game.EventType$PlayerChatEventClient")
      (cons1 (fn [_]
-              (when @enable-translation
-                (when-let [msg (-> (.. Vars/ui -chatfrag -messages)
-                                   (first)
-                                   .-unformatted
-                                   color/remove-colors)]
-                  (translate msg @target-lang
-                             #(when-not (= % msg)
-                                (.addMessage (.-chatfrag Vars/ui)
-                                             % "Translation" Color/sky "" %))))))))))
+              (when-let' [_   @enable-translation
+                          msg (-> (.. Vars/ui -chatfrag -messages)
+                                  (first)
+                                  .-unformatted
+                                  color/remove-colors)
+                          _   (seq msg)]
+                (translate msg @target-lang
+                           #(when-not (= % msg)
+                              (.addMessage (.-chatfrag Vars/ui)
+                                           % "Translation" Color/sky "" %)))))))))
 
 (defn -register-client-commands [^CommandHandler handler]
   (.register

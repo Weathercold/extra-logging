@@ -22,8 +22,10 @@
                       [sender message] (str/split s #":\S* " 2)
                       _           (and message
                                        (not-any? #(str/includes? sender %)
-                                                 ["Translation" "Error" (.-name Vars/player)])
-                                       (some (fn [^Player player] (str/includes? sender (.-name player)))
+                                                 ["Translation" "Error" "Server"
+                                                  (.-name Vars/player)])
+                                       (some (fn [^Player player]
+                                               (str/includes? sender (.-name player)))
                                              Groups/player))
                       unformatted (color/remove-colors message)]
             (tl/translate
