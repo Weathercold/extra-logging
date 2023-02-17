@@ -11,7 +11,7 @@
                  [http-kit "2.7.0-alpha1"]
                  [nrepl "1.1.0-alpha1"]]
   :profiles {:user     {:plugins [[lein-kibit "0.1.8"]]}
-             :provided {:dependencies [[com.github.Anuken.MindustryJitpack/core "v141.2"]
+             :provided {:dependencies [[com.github.Anuken.Mindustry/core "v141.2"]
                                        [com.github.Anuken.Arc/arc-core "v141.2"]
                                        ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
