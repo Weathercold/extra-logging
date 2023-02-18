@@ -99,6 +99,6 @@
 ;; endregion
 
 ;; Experimental
-(defmacro defcons [& body]
+(defmacro consfn [bindings & body]
   `(reify Cons
-     (get [a] ~@body)))
+     (get ~(into ['this] bindings) ~@body)))

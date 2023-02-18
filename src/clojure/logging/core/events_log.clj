@@ -1,7 +1,7 @@
 (ns logging.core.events-log
   (:require [clojure.string :as str]
             [logging.core.setting :refer [defsetting]]
-            [logging.util.lambdas :refer [cons1]]
+            [logging.util.lambdas :refer [consfn]]
             [logging.util.log :refer [err log]]
             [logging.util.task-queue :as tq])
   (:import (arc Events)
@@ -40,5 +40,5 @@
 
 (defn -main []
   (when @enable
-    (run! (fn [c] (Events/on c (cons1 #(log @log-level (trace %)))))
+    (run! #(Events/on % (consfn [e] (log @log-level (trace e))))
           @listening-events)))

@@ -1,3 +1,4 @@
 {:lint-as {logging.core.setting/defsetting clojure.core/defonce
+           logging.util.lambdas/consfn     clojure.core/fn
            logging.util.macros/if-let'     clojure.core/let
            logging.util.macros/when-let'   clojure.core/let}}

@@ -6,7 +6,7 @@
             [logging.core.setting :refer [defsetting]]
             [logging.core.translating.libretranslate :as libretranslate]
             (logging.util [color :as color]
-                          [lambdas :refer [command-runner cons1]]
+                          [lambdas :refer [command-runner consfn]]
                           [log :refer [info]]
                           [macros :refer [if-let' when-let']])
             [logging.vars :refer [is-foo]])
@@ -38,12 +38,12 @@
 
 (defmulti languages (constantly backend))
 (defmethod languages :backends/libretranslate
-  ([] (libretranslate/languages))
+  ([] (libretranslate/languages identity))
   ([callback] (libretranslate/languages callback)))
 
 (defmulti translate (constantly backend))
 (defmethod translate :backends/libretranslate
-  ([s callback] (libretranslate/translate s callback))
+  ([s callback] (libretranslate/translate s "en" callback))
   ([s dst callback] (libretranslate/translate s dst callback)))
 
 ;; Disable reflection warning, foo methods can't be statically resolved
@@ -59,17 +59,17 @@
   (when @is-foo
     (Events/on
      (Class/forName "mindustry.game.EventType$PlayerChatEventClient")
-     (cons1 (fn [_]
-              (when-let' [_   @enable-translation
-                          msg (-> (.. Vars/ui -chatfrag -messages)
-                                  (first)
-                                  .-unformatted
-                                  color/remove-colors)
-                          _   (seq msg)]
-                (translate msg @target-lang
-                           #(when-not (= % msg)
-                              (.addMessage (.-chatfrag Vars/ui)
-                                           % "Translation" Color/sky "" %)))))))))
+     (consfn [_]
+       (when-let' [_   @enable-translation
+                   msg (-> (.. Vars/ui -chatfrag -messages)
+                           (first)
+                           .-unformatted
+                           color/remove-colors)
+                   _   (seq msg)]
+         (translate msg @target-lang
+                    #(when-not (= % msg)
+                       (.addMessage (.-chatfrag Vars/ui)
+                                    % "Translation" Color/sky "" %))))))))
 
 (defn -register-client-commands [^CommandHandler handler]
   (.register

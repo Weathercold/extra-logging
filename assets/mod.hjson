@@ -1,10 +1,22 @@
 name: extra-logging
 displayName: "Extra Logging 2"
 subtitle: "Debugging utilities and QoLs"
-description: "Adds more debugging features and improvements.\n\nFeatures:\n    - Fully customizable log messages /w timestamp\n    - Translate chat messages to your locale\n    - Change log level\n    - Force colored terminal output, colorize `[name]` in log messages\n    - Print event triggers to the console\n    - Various other QoL improvements.\n\nSee README.md for more information."
-author: "Weathercold"
+description: '''
+Adds more debugging features and improvements.
 
-version: 2.0.0-alpha
+Features:
+- Fully customizable log messages /w timestamp
+- Translate chat messages to your locale
+- Change log level
+- Colorize `[name]` in log messages
+- Print event triggers to the console
+- Various other QoL improvements.
+
+See README.md for more information.
+'''
+author: Weathercold
+
+version: 2.0.0-delta
 minGameVersion: 140
 
 main: logging.CljLoader

@@ -1,6 +1,6 @@
 (ns logging.core.repl
   (:require [logging.core.setting :refer [defsetting]]
-            [logging.util.lambdas :refer [cons1]]
+            [logging.util.lambdas :refer [consfn]]
             [logging.util.log :refer [err info]]
             [logging.util.task-queue :as tq]
             [nrepl.core :as nrepl]
@@ -25,4 +25,4 @@
   (when @enable
     (reset! server (nrepls/start-server :bind @address :port @port))
     (info "Started REPL on @:@" @address @port)
-    (Events/on EventType$DisposeEvent (cons1 (fn [_] (nrepls/stop-server @server))))))
+    (Events/on EventType$DisposeEvent (consfn [_] (nrepls/stop-server @server)))))

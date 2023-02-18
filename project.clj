@@ -1,10 +1,10 @@
-(defproject extra-logging "2.0.0-gamma"
+(defproject extra-logging "2.0.0-delta"
   :description "Extra Logging"
   :url "http://github.com/Weathercold/extra-logging"
   :license {:name "GPL-3.0-or-later"
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
-  :repositories [["jitpack" "https://www.jitpack.io"]]
+  :repositories {"jitpack" "https://www.jitpack.io"}
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/data.json "2.4.0"]
                  [org.flatland/ordered "1.15.10"]

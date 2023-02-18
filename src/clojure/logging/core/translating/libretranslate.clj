@@ -56,19 +56,16 @@
            ret))))
     (warn "No server available. Aborting translation.")))
 
-(defn languages
-  ([] (languages identity))
-  ([callback] (fetch "/languages" {} #(callback (set (map :code %))))))
+(defn languages [callback]
+  (fetch "/languages" {} #(callback (set (map :code %)))))
 
-(defn translate
-  ([s callback] (translate s "en" callback))
-  ([s dst callback]
-   (debug "Translating @ to @..." s dst)
-   (fetch "/translate"
-          {:method :post
-           :body   (json/write-str {:q      s
-                                    :source "auto"
-                                    :target dst}
-                                   :escape-unicode false)
-           :filter (http/max-body-filter 1024)}
-          #(callback (:translatedText %)))))
+(defn translate [s dst callback]
+  (debug "Translating @ to @..." s dst)
+  (fetch "/translate"
+         {:method :post
+          :body   (json/write-str {:q      s
+                                   :source "auto"
+                                   :target dst}
+                                  :escape-unicode false)
+          :filter (http/max-body-filter 1024)}
+         #(callback (:translatedText %))))

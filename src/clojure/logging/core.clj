@@ -5,7 +5,7 @@
                           [settings :as settings]
                           [translating :as tl])
             [logging.ui.fragments.chat-fragment :as chat-fragment]
-            [logging.util.lambdas :refer [cons1]]
+            [logging.util.lambdas :refer [consfn]]
             [logging.util.log :refer [debug]])
   (:import (arc Events)
            (arc.util CommandHandler)
@@ -17,7 +17,7 @@
   (debug "Creating mod")
   (repl/-main)
   (events-log/-main)
-  (Events/on EventType$DisposeEvent (cons1 (fn [_] (shutdown-agents)))))
+  (Events/on EventType$DisposeEvent (consfn [_] (shutdown-agents))))
 
 (defn -init []
   (debug "Initializing")
