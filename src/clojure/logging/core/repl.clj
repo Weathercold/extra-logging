@@ -2,6 +2,7 @@
   (:require [logging.core.setting :refer [defsetting]]
             [logging.util.lambdas :refer [cons1]]
             [logging.util.log :refer [err info]]
+            [logging.util.task-queue :as tq]
             [nrepl.core :as nrepl]
             [nrepl.server :as nrepls])
   (:import (arc Events)
@@ -12,7 +13,7 @@
 (defsetting port "extra-replport" "7888"
   #(try (Integer/parseInt %)
         (catch NumberFormatException e
-          (err "Server port must be an integer" e) ; FIXME
+          (tq/soon (err "Server port must be an integer" e))
           7888)))
 
 (def server (atom nil))

@@ -2,9 +2,10 @@
   "The log handler that replaces arc.util.Log/logger."
   (:require [clojure.string :as str]
             [logging.core.setting :refer [defsetting]]
-            [logging.util.color :as color]
-            [logging.util.lambdas :refer [cons1]]
-            [logging.util.log :refer [err]])
+            (logging.util [color :as color]
+                          [lambdas :refer [cons1]]
+                          [log :refer [err]]
+                          [task-queue :as tq]))
   (:import (arc Events)
            (arc.util Log Log$LogHandler Log$LogLevel)
            (java.time LocalTime)
@@ -21,18 +22,17 @@
 (def client-loaded (ref false))
 (def log-buffer (ref [] :validator #(or (= @client-loaded false) (empty? %))))
 
-(defsetting log-level "extra-loglevel" 0 #(nth (Log$LogLevel/values) %))
+(defsetting log-level "extra-loglevel" 0
+  (fn [ord]
+    (doto (nth (Log$LogLevel/values) ord)
+      (#(tq/soon (set! Log/level %))))))
 (defsetting colored-terminal "extra-coloredterminal" true)
 (defsetting terminal-format "extra-terminalformat" "&lw[$t]&fr &fb$L[$l]&fr $m&fr")
 (defsetting console-format "extra-consoleformat" "[gray][$t][] $L[$l][] $m")
 (defsetting time-formatter "extra-timeformat" "HH:mm:ss:SSS"
   #(try (DateTimeFormatter/ofPattern %)
         (catch Exception e
-          (if @client-loaded
-            ;; FIXME: ugh side effect inside transaction
-            (err "Time format invalid" e)
-            (Events/on EventType$ClientLoadEvent
-                       (cons1 (fn [_] (err "Time format invalid" e)))))
+          (tq/soon (err "Time format invalid" e))
           DateTimeFormatter/ISO_LOCAL_TIME)))
 
 (def instance

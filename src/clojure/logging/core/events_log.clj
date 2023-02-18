@@ -2,7 +2,8 @@
   (:require [clojure.string :as str]
             [logging.core.setting :refer [defsetting]]
             [logging.util.lambdas :refer [cons1]]
-            [logging.util.log :refer [err log]])
+            [logging.util.log :refer [err log]]
+            [logging.util.task-queue :as tq])
   (:import (arc Events)
            (arc.util Log$LogLevel)
            (java.lang.reflect Field)))
@@ -11,8 +12,7 @@
   (try (Class/forName
         (if (str/includes? s ".") s (str "mindustry.game.EventType$" s)))
        (catch Exception e
-         ;; FIXME: ugh side effect inside transaction
-         (err (str "Cannot get event class with name " s) e))))
+         (tq/soon (err (str "Cannot get event class with name " s) e)))))
 
 (defn- trace [o]
   (apply str

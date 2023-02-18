@@ -9,9 +9,10 @@
                           [setting :refer [set-setting]]
                           [translating :as tl])
             (logging.util [lambdas :refer [cons1 s-proc]]
-                          [log :as log]))
+                          [log :as log]
+                          [task-queue :as tq]))
   (:import (arc Core)
-           (arc.util Log Log$LogLevel)
+           (arc.util Log$LogLevel)
            (logging.core.setting Setting)
            (mindustry Vars)
            (mindustry.gen Icon)
@@ -83,7 +84,7 @@
           events-log/log-level
 
           tl/enable-translation]))
-  (set! Log/level @log-handler/log-level))
+  (tq/exec))
 
 (defn -init []
   (when-not Vars/headless

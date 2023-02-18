@@ -19,6 +19,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/codeStyles" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/inspectionProfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/.temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -29,7 +30,7 @@
     <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:d0d80da882" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:d0d80da882" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:d0d80da882" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.MindustryJitpack/core:v141.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v141.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken/rhino:73a812444ac388ac2d94013b5cadc8f70b7ea027" level="project" />
     <orderEntry type="library" name="Leiningen: com.hypirion/io:0.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
