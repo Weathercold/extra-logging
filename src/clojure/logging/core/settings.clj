@@ -82,6 +82,7 @@
 
           events-log/enable
           events-log/log-level
+          events-log/listening-events
 
           tl/enable-translation]))
   (tq/exec))
