@@ -11,7 +11,7 @@
            (java.time LocalTime)
            (java.time.format DateTimeFormatter)
            (mindustry Vars)
-           (mindustry.game EventType$ClientLoadEvent EventType$FileTreeInitEvent)))
+           (mindustry.game EventType$ClientLoadEvent)))
 
 (def level->code
   (zipmap (Log$LogLevel/values)
@@ -34,7 +34,7 @@
 (defsetting colored-terminal "extra-coloredterminal" true)
 (defsetting terminal-format "extra-terminalformat" "&lw[$t]&fr &fb$L[$l]&fr $m&fr")
 (defsetting console-format "extra-consoleformat" "[gray][$t][] $L[$l][] $m")
-(defsetting time-formatter "extra-timeformat" "HH:mm:ss:SSS"
+(defsetting time-formatter "extra-timeformat" "HH:mm:ss.SSS"
   #(try (DateTimeFormatter/ofPattern %)
         (catch Exception e
           (tq/soon (err "Time format invalid" e))
@@ -71,22 +71,17 @@
 
 (defn -main []
   (set! Log/logger instance)
-  ;; New Console's event registers after this mod loads, so we delay the event
-  ;; registration
   (Events/on
-   EventType$FileTreeInitEvent
+   EventType$ClientLoadEvent
    (consfn [_]
-     (Events/on
-      EventType$ClientLoadEvent
-      (consfn [_]
-        (reset! client-loaded true)
-        (run! #(.. Vars/ui -consolefrag (addMessage %)) @log-buffer)
-        (reset! log-buffer [])
-        (set! Log/logger instance)
-        (when-some [new-console (.getMod Vars/mods "newconsole")]
-          (dosync
-           (ref-set has-new-console true)
-           (as-> (.-loader new-console) %
-                 (Class/forName "newconsole.ui.dialogs.Console" true %)
-                 (Reflect/get % "logBuffer")
-                 (ref-set nc-log-buffer %)))))))))
+     (reset! client-loaded true)
+     (run! #(.. Vars/ui -consolefrag (addMessage %)) @log-buffer)
+     (reset! log-buffer [])
+     (set! Log/logger instance)
+     (when-some [new-console (.getMod Vars/mods "newconsole")]
+       (dosync
+        (ref-set has-new-console true)
+        (as-> (.-loader new-console) %
+              (Class/forName "newconsole.ui.dialogs.Console" true %)
+              (Reflect/get % "logBuffer")
+              (ref-set nc-log-buffer %)))))))

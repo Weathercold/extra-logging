@@ -1,6 +1,7 @@
 name: extra-logging
 displayName: "Extra Logging 2"
 subtitle: "Debugging utilities and QoLs"
+author: Weathercold
 description: '''
 Adds more debugging features and improvements.
 
@@ -14,11 +15,10 @@ Features:
 
 See README.md for more information.
 '''
-author: Weathercold
 
-version: 2.0.0-delta
-minGameVersion: 140
-
+version: 2.0.0-epsilon
+minGameVersion: 142
 main: logging.CljLoader
+softDependencies: [ "newconsole" ]
 java: true
 hidden: true

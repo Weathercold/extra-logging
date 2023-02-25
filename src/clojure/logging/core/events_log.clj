@@ -30,6 +30,7 @@
                 ContentInitEvent
                 WorldLoadEvent
                 ClientLoadEvent
+                ServerLoadEvent
                 ClientPreConnectEvent
                 StateChangeEvent
                 DisposeEvent"
