@@ -18,7 +18,6 @@
                       "http://168.119.234.142:5000"
                       "https://translate.argosopentech.com"
                       "https://translate.terraprint.co"
-                      "https://lt.vern.cc"
                       "https://libretranslate.de"]
                      (repeatedly #(atom true)))))
 

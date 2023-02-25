@@ -101,4 +101,4 @@
 ;; Experimental
 (defmacro consfn [bindings & body]
   `(reify Cons
-     (get ~(into ['this] bindings) ~@body)))
+     (~'get ~(into ['this] bindings) ~@body)))
