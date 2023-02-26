@@ -1,16 +1,17 @@
 name: extra-logging
 displayName: "Extra Logging 2"
 subtitle: "Debugging utilities and QoLs"
+repo: "Weathercold/extra-logging"
 author: Weathercold
 description: '''
 Adds more debugging features and improvements.
 
 Features:
-- Fully customizable log messages /w timestamp
-- Translate chat messages to your locale
-- Change log level
-- Colorize `[name]` in log messages
-- Print event triggers to the console
+- Fully customizable log messages /w timestamp;
+- Translate chat messages to your language;
+- Change log level;
+- Colorize `[colorname]` in log messages;
+- Log event triggers;
 - Various other QoL improvements.
 
 See README.md for more information.
