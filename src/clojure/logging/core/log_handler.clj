@@ -5,13 +5,15 @@
             (logging.util [color :as color]
                           [lambdas :refer [consfn]]
                           [log :refer [err]]
+                          [macros :refer [when-let']]
                           [task-queue :as tq]))
   (:import (arc Events)
            (arc.util Log Log$LogHandler Log$LogLevel Reflect)
            (java.time LocalTime)
            (java.time.format DateTimeFormatter)
            (mindustry Vars)
-           (mindustry.game EventType$ClientLoadEvent)))
+           (mindustry.game EventType$ClientLoadEvent)
+           (mindustry.mod Mods$ModState)))
 
 (def level->code
   (zipmap (Log$LogLevel/values)
@@ -78,7 +80,8 @@
      (run! #(.. Vars/ui -consolefrag (addMessage %)) @log-buffer)
      (reset! log-buffer [])
      (set! Log/logger instance)
-     (when-some [new-console (.getMod Vars/mods "newconsole")]
+     (when-let' [new-console (.getMod Vars/mods "newconsole")
+                 _           (= (.state new-console) Mods$ModState/enabled)]
        (dosync
         (ref-set has-new-console true)
         (as-> (.-loader new-console) %
