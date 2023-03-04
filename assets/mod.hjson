@@ -17,7 +17,7 @@ Features:
 See README.md for more information.
 '''
 
-version: 2.0.0
+version: 2.0.1
 minGameVersion: 142
 main: "logging.CljLoader"
 softDependencies: [ "newconsole" ]
