@@ -24,12 +24,12 @@
       formatter.x86_64-linux = nixpkgs-fmt;
       devShells.x86_64-linux.default = mkShell {
         buildInputs = [
-          temurin-bin-17
+          jetbrains.jdk
           android-sdk
           leiningen
         ];
         shellHook = ''
-          export JAVA_HOME=${temurin-bin-17} \
+          export JAVA_HOME=${jetbrains.jdk}/lib/openjdk \
                  ANDROID_SDK_ROOT=${android-sdk}/share/android-sdk \
                  PATH=$JAVA_HOME/bin:$ANDROID_SDK_ROOT/build-tools/33.0.1:$PATH
           mkdir ~/Android 2>/dev/null
