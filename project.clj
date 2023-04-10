@@ -5,7 +5,8 @@
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
   :repositories {"jitpack" "https://www.jitpack.io"}
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [;; This is the last clojure version that works on Android...
+                 [org.clojure/clojure "1.8.0"]
                  [org.clojure/data.json "2.4.0"]
                  [org.flatland/ordered "1.15.10"]
                  [http-kit "2.7.0-alpha1"]
@@ -23,7 +24,7 @@
   ;; Do not set :jar-name as it will break jar resolution in tasks
   :uberjar-name "extra-logging-%s-desktop.jar"
 
-  :min-lein-version "2.0.0"
+  :min-lein-version "2.10.0"
   :global-vars {*warn-on-reflection* true}
   ;; https://clojure.org/reference/compilation#directlinking
   :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
@@ -32,9 +33,5 @@
             "run-jar" ["do" "uberjar," "copy," "launch"]
             "run-dex" ["do" "uberjar," "dex," "copy," "launch"]}
 
-  ;; Uncomment for AOT (default)
   :aot :all
   :omit-source true)
-
-;; Uncomment for JIT
-;;:jar-exclusions [#"\.java"])

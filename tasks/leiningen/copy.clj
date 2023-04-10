@@ -15,12 +15,12 @@
 (defn copy
   "Copy the jar to the mods folder for easy testing."
   [project]
-  (let [android-jar  (io/file (jar/get-classified-jar-filename project :android))
-        desktop-jar  (io/file (jar/get-jar-filename project :standalone))
-        dst-zip      (io/file @mods-folder (str (:name project) ".zip"))
-        selected-jar (if (.exists android-jar) android-jar
-                                               (when (.exists desktop-jar) desktop-jar))]
-    (if selected-jar (do (println "Copying" (.getAbsolutePath selected-jar)
-                                  "to" (.getAbsolutePath dst-zip) "...")
-                         (io/copy selected-jar dst-zip))
-                     (main/abort "No jar found."))))
+  (let [android-jar (io/file (jar/get-classified-jar-filename project :android))
+        desktop-jar (io/file (jar/get-jar-filename project :standalone))
+        dst-zip     (io/file @mods-folder (str (:name project) ".zip"))]
+    (if-let [selected-jar (cond (.exists android-jar) android-jar
+                                (.exists desktop-jar) desktop-jar)]
+      (do (println "Copying" (.getAbsolutePath selected-jar)
+                   "to" (.getAbsolutePath dst-zip) "...")
+          (io/copy selected-jar dst-zip))
+      (main/abort "No jar found."))))
