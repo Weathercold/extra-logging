@@ -1,20 +1,23 @@
 name: Build Project
-on: [ push, pull_request ]
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Build project
         run: |
           export PATH=$ANDROID_HOME/build-tools/32.0.0:$PATH
           lein uberdex
+
       - name: Upload desktop build
         uses: actions/upload-artifact@v3
         with:
           name: Desktop build in a box
           path: target/*-desktop.jar
+
       - name: Upload android build
         uses: actions/upload-artifact@v3
         with:

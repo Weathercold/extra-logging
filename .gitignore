@@ -1,6 +1,7 @@
 /target
 /classes
 /checkouts
+/server
 profiles.clj
 pom.xml
 pom.xml.asc
@@ -11,10 +12,13 @@ pom.xml.asc
 .hgignore
 .hg/
 
-/.clj-kondo
+.cache
+.temp
 /.idea/*
 !/.idea/runConfigurations
 !/.idea/clojure_compiler.xml
 !/.idea/jarRepositories.xml
+!/.idea/misc.xml
+!/.idea/modules.xml
 /.lsp
 /.calva

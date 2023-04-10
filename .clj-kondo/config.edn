@@ -1,0 +1,1 @@
+{:lint-as {example.util.lambdas/consfn clojure.core/fn}}

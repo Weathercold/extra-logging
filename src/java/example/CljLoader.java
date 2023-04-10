@@ -10,7 +10,7 @@ import mindustry.mod.Mod;
  * @author Weathercold
  */
 public class CljLoader extends Mod {
-    public static final String ns = CljLoader.class.getPackageName() + ".main";
+    public static final String ns = CljLoader.class.getPackage().getName() + ".main";
 
     static {
         Thread.currentThread().setContextClassLoader(CljLoader.class.getClassLoader());
@@ -20,35 +20,35 @@ public class CljLoader extends Mod {
     public CljLoader() {
         try {
             Clojure.var(ns, "main").invoke();
-        } catch (Throwable ignored) {}
+        } catch (IllegalStateException ignored) {}
     }
 
     @Override
     public void init() {
         try {
             Clojure.var(ns, "init").invoke();
-        } catch (Throwable ignored) {}
+        } catch (IllegalStateException ignored) {}
     }
 
     @Override
     public void loadContent() {
         try {
             Clojure.var(ns, "load-content").invoke();
-        } catch (Throwable ignored) {}
+        } catch (IllegalStateException ignored) {}
     }
 
     @Override
     public void registerClientCommands(CommandHandler handler) {
         try {
             Clojure.var(ns, "register-client-commands").invoke(handler);
-        } catch (Throwable ignored) {}
+        } catch (IllegalStateException ignored) {}
     }
 
     @Override
     public void registerServerCommands(CommandHandler handler) {
         try {
             Clojure.var(ns, "register-server-commands").invoke(handler);
-        } catch (Throwable ignored) {}
+        } catch (IllegalStateException ignored) {}
     }
 
     @Override

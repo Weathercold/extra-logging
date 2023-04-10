@@ -4,6 +4,7 @@
                      Cons Cons2 Cons3 Cons4 ConsT
                      FloatFloatf Floatc Floatc2 Floatc4 Floatf Floatp
                      Prov)
+           (arc.util CommandHandler$CommandRunner Timer$Task)
            (mindustry.ui.dialogs SettingsMenuDialog$StringProcessor)))
 
 ;; region Providers
@@ -46,9 +47,10 @@
 
 ;; endregion
 
-(defn runnable ^Runnable [f]
-  (reify Runnable
-    (run [_] (f))))
+;; Not exactly a lambda but ok
+(defn task ^Timer$Task [f]
+  (proxy [Timer$Task] []
+    (run [] (f))))
 
 ;; region Consumers
 
@@ -72,6 +74,10 @@
   (reify ConsT
     (get [_ a] (f a))))
 
+(defn command-runner ^CommandHandler$CommandRunner [f]
+  (reify CommandHandler$CommandRunner
+    (accept [_ args player] (f args player))))
+
 (defn boolc ^Boolc [f]
   (reify Boolc
     (get [_ a] (f a))))
@@ -90,7 +96,6 @@
 
 ;; endregion
 
-;; Experimental
-(defmacro defrunnable [& body]
-  `(reify Runnable
-     (run [_] ~@body)))
+(defmacro consfn [bindings & body]
+  `(reify Cons
+     (~'get ~(into ['this] bindings) ~@body)))

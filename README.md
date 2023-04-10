@@ -19,15 +19,17 @@ Example Mindustry mod written in Clojure.
     $ ./lein uberjar
 
 The output should be `target/example-<version>-desktop.jar`.\
-**NOTE:** You most likely wouldn't want to use
-`target/example-<version>-nodeps.jar` since it doesn't include the
-dependencies.
+**NOTE:** You most likely wouldn't want to use `target/example-<version>.jar`
+since it doesn't include the dependencies.
 
 ### Dexify for Android
 
-**NOTE:** This mod still doesn't work on Android.
+**NOTE:** In order to get your mod working on Android, you must AOT compile all
+namespaces. This is because clojure cannot generate DEX bytecode dynamically. In
+addition, you must use clojure 1.8.0, as newer versions don't work on Android
+anymore.
 
-- Android SDK 26+
+You need Android SDK 26+.
 
 Make sure the `ANDROID_SDK_ROOT` environment variable is set to the parent
 directory of where you unzipped the Android SDK command-line tools. Set it up
@@ -82,21 +84,15 @@ configurations (see below).
 
 Two run configurations are provided:
 
-- Desktop `./lein run-jar`
-- Android `./lein run-dex`
+- Desktop `./lein uberjar`
+- Android `./lein uberdex`
 
 ## GitHub Workflow
 
 A workflow automatically builds your project on commit or on pull request.
-A dexified jar and a plain one are generated.[1]
+A dexified jar and a plain one are generated.
 
 ## Credits
 
-iarkn for the dex task, GitHub workflow and various other things
-
----
-
-[1] Due to GitHub's limitation, jar files cannot be uploaded directly. I worked
-around this issue by extracting and uploading the files inside the jar, however
-the upload speed for a large amount of small files is extremely slow. For this
-reason a plain jar for testing is also uploaded, but it comes wrapped in a zip.
+Thanks to [iarkn](https://github.com/iarkn) for the dex task, GitHub workflow
+and various other things
