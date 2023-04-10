@@ -4,7 +4,6 @@
                           [repl :as repl]
                           [settings :as settings]
                           [translating :as tl])
-            [logging.ui.fragments.chat-fragment :as chat-fragment]
             [logging.util.lambdas :refer [consfn]]
             [logging.util.log :refer [debug]])
   (:import (arc Events)
@@ -22,8 +21,7 @@
 (defn -init []
   (debug "Initializing")
   (settings/-init)
-  (tl/-init)
-  (chat-fragment/-init))
+  (tl/-init))
 
 (defn -load-content [] (debug "Loading content"))
 

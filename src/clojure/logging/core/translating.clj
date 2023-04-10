@@ -15,6 +15,7 @@
            (arc.util CommandHandler Reflect)
            (java.util Locale)
            (mindustry Vars)
+           (mindustry.game EventType$PlayerChatEvent)
            (mindustry.gen Call)
            (mindustry.ui.fragments ChatFragment)))
 
@@ -34,6 +35,18 @@
     (not @foo-enable-translation)
     (not Vars/headless)))
 
+;; Disable reflection warning, foo methods can't be statically resolved
+(set! *warn-on-reflection* false)
+(defn- add-message [s]
+  (if @is-foo
+    (.addMessage (.-chatfrag Vars/ui) s "Translation" Color/sky "" s)
+    (.addMessage (.-chatfrag Vars/ui) (str "[sky]Translation:[] " s))))
+(defn- err-msg-not-found []
+  (if @is-foo
+    (let [error "No message found."]
+      (.addMessage (.-chatfrag Vars/ui) error "Error" Color/scarlet "" error))
+    (.addMessage (.-chatfrag Vars/ui) "[scarlet]Error:[] no message found.")))
+(set! *warn-on-reflection* true)
 (defn- send-chat [s] (Call/sendChatMessage (str s " [gray](translated)")))
 
 (defmulti languages (constantly backend))
@@ -46,8 +59,6 @@
   ([s callback] (libretranslate/translate s "en" callback))
   ([s dst callback] (libretranslate/translate s dst callback)))
 
-;; Disable reflection warning, foo methods can't be statically resolved
-(set! *warn-on-reflection* false)
 (defn -init []
   (when @foo-enable-translation (info "@extra-logging.footranslation"))
   (when Vars/headless (info "@extra-logging.headlesstranslation"))
@@ -56,20 +67,14 @@
                (let [locale (.getLanguage (Locale/getDefault))]
                  (when (langs locale)
                    (reset! target-lang locale)))))
-  (when @is-foo
-    (Events/on
-     (Class/forName "mindustry.game.EventType$PlayerChatEventClient")
-     (consfn [_]
-       (when-let' [_   @enable-translation
-                   msg (-> (.. Vars/ui -chatfrag -messages)
-                           (first)
-                           .-unformatted
-                           color/remove-colors)
-                   _   (seq msg)]
-         (translate msg @target-lang
-                    #(when-not (= % msg)
-                       (.addMessage (.-chatfrag Vars/ui)
-                                    % "Translation" Color/sky "" %))))))))
+  (Events/on
+   EventType$PlayerChatEvent
+   (consfn [e]
+     (when-let' [e   ^EventType$PlayerChatEvent e
+                 _   (and @enable-translation
+                          (not= (.-player e) Vars/player))
+                 msg (color/remove-colors (.-message e))]
+       (translate msg @target-lang #(when-not (= % msg) (add-message %)))))))
 
 (defn -register-client-commands [^CommandHandler handler]
   (.register
@@ -84,17 +89,13 @@
             (translate (str a " " b) send-chat))
         a (translate a send-chat)
         ;; Translate last message in chat
-        :else (if-let' [msg         (first (Reflect/get ChatFragment (.-chatfrag Vars/ui) "messages"))
-                        unformatted (if @is-foo (.-unformatted msg)
+        :else (if-let' [msg         (first (Reflect/get
+                                            ChatFragment (.-chatfrag Vars/ui)
+                                            "messages"))
+                        unformatted (if @is-foo (Reflect/get msg "unformatted")
                                                 (second (str/split msg #":\S* " 2)))]
                 (translate
                  (color/remove-colors unformatted)
                  @target-lang
-                 #(if @is-foo
-                    (.addMessage (.-chatfrag Vars/ui) % "Translation" Color/sky "" %)
-                    (.addMessage (.-chatfrag Vars/ui) (str "[sky]Translation:[] " %))))
-                (if @is-foo
-                  (let [error "No message found."]
-                    (.addMessage (.-chatfrag Vars/ui) error "Error" Color/scarlet "" error))
-                  (.addMessage (.-chatfrag Vars/ui) "[scarlet]Error:[] no message found."))))))))
-(set! *warn-on-reflection* true)
+                 add-message)
+                (err-msg-not-found)))))))

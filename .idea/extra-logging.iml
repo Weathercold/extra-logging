@@ -25,13 +25,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clj-commons/pomegranate:1.2.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v142" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:9de902fcfe" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:9de902fcfe" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:9de902fcfe" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:9de902fcfe" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:9de902fcfe" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v142" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v143.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:d62ba7f6c3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:d62ba7f6c3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:d62ba7f6c3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:d62ba7f6c3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:d62ba7f6c3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v143.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken/rhino:73a812444ac388ac2d94013b5cadc8f70b7ea027" level="project" />
     <orderEntry type="library" name="Leiningen: com.hypirion/io:0.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
