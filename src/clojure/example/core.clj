@@ -1,11 +1,11 @@
-(ns example.main
+(ns example.core
   (:require [example.util.lambdas :refer [consfn]])
   (:import (arc Core Events)
            (arc.util CommandHandler Log)
            (mindustry.game EventType$ClientLoadEvent)
            (mindustry.ui.dialogs BaseDialog)))
 
-(defn main []
+(defn -main []
   (Log/info "Creating example mod.")
   (Events/on
    EventType$ClientLoadEvent
@@ -23,14 +23,14 @@
              (size 100., 50.)))
        (.show dialog)))))
 
-(defn init []
+(defn -init []
   (Log/info "Initializing mod."))
 
-(defn load-content []
+(defn -load-content []
   (Log/info "Loading some example content."))
 
-(defn register-client-commands [^CommandHandler handler]
+(defn -register-client-commands [^CommandHandler handler]
   (Log/info "Registering client commands."))
 
-(defn register-server-commands [^CommandHandler handler]
+(defn -register-server-commands [^CommandHandler handler]
   (Log/info "Registering server commands."))
