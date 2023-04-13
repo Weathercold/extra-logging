@@ -70,7 +70,8 @@
   (Events/on
    EventType$PlayerChatEvent
    (consfn [e]
-     (when-let' [e   ^EventType$PlayerChatEvent e
+     (when-let' [^EventType$PlayerChatEvent
+                 e   e
                  _   (and @enable-translation
                           (not= (.-player e) Vars/player))
                  msg (color/remove-colors (.-message e))]

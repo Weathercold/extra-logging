@@ -8,7 +8,7 @@
   :dependencies [;; This is the last clojure version that works on Android...
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/data.json "2.4.0"]
-                 [org.flatland/ordered "1.15.10"]
+                 [org.flatland/ordered "1.15.11"]
                  [http-kit "2.7.0-alpha1"]
                  [nrepl "1.1.0-alpha1"]]
   :profiles {:user     {:plugins [[lein-kibit "0.1.8"]]}

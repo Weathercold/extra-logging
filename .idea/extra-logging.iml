@@ -74,7 +74,7 @@
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-interpolation:1.25" level="project" />
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-utils:3.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.flatland/classlojure:0.7.1" level="project" />
-    <orderEntry type="library" name="Leiningen: org.flatland/ordered:1.15.10" level="project" />
+    <orderEntry type="library" name="Leiningen: org.flatland/ordered:1.15.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.lz4/lz4-java:1.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.nrepl/incomplete:0.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.slf4j/jcl-over-slf4j:1.7.32" level="project" />
