@@ -11,7 +11,7 @@
    EventType$ClientLoadEvent
    (consfn [_]
      (let [dialog                (BaseDialog. "frog")
-           cont                  (.cont dialog)
+           cont                  (.-cont dialog)
            ^Runnable hide-dialog #(.hide dialog)]
        (doto cont
          (.. (add "behold")
