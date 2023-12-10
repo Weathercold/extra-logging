@@ -1,4 +1,4 @@
-# MindustryClojureModTemplate
+# mindustry-clj-mod-template
 
 Example Mindustry mod written in Clojure.
 
@@ -25,9 +25,11 @@ since it doesn't include the dependencies.
 ### Dexify for Android
 
 **NOTE:** In order to get your mod working on Android, you must AOT compile all
-namespaces. This is because clojure cannot generate DEX bytecode dynamically. In
-addition, you must use clojure 1.8.0, as newer versions don't work on Android
-anymore.
+namespaces. This is because clojure cannot generate DEX bytecode dynamically.
+Even worse, you must use clojure 1.8.0 as newer versions don't work on Android
+anymore, BUT only clojure 1.9.0+ works on Steam. So you need to choose between
+Android support or Steam support. If you want both, I suggest using Kotlin
+instead.
 
 You need Android SDK 26+.
 

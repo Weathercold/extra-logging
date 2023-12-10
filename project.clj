@@ -4,12 +4,12 @@
   :license {:name "GPL-3.0-or-later"
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
-  :repositories {"zelaux" "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
+  :repositories {"zelaux"  "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
                  "jitpack" "https://www.jitpack.io"}
   :dependencies [;; This is the last clojure version that works on Android...
                  [org.clojure/clojure "1.8.0"]]
-  :profiles {:provided {:dependencies [[com.github.Anuken.Mindustry/core "v145.1"]
-                                       [com.github.Anuken.Arc/arc-core "v145.1"]
+  :profiles {:provided {:dependencies [[com.github.Anuken.Mindustry/core "v146"]
+                                       [com.github.Anuken.Arc/arc-core "v146"]
                                        ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
