@@ -24,17 +24,19 @@
       formatter.x86_64-linux = nixpkgs-fmt;
       devShells.x86_64-linux.default = mkShell {
         buildInputs = [
-          jetbrains.jdk
           android-sdk
+          jetbrains.jdk
           leiningen
+          mindustry-wayland
         ];
         shellHook = ''
           export JAVA_HOME=${jetbrains.jdk}/lib/openjdk \
                  ANDROID_SDK_ROOT=${android-sdk}/share/android-sdk \
                  PATH=$JAVA_HOME/bin:$ANDROID_SDK_ROOT/build-tools/33.0.1:$PATH
           mkdir ~/Android 2>/dev/null
-          ln -snf $JAVA_HOME ~/jdk
-          ln -snf $ANDROID_SDK_ROOT ~/Android/Sdk
+          ln -snf $JAVA_HOME ~/src/jdk
+          ln -snf $ANDROID_SDK_ROOT ~/src/adk
+          ln -snf ${mindustry-wayland}/share/mindustry.jar ~/src/mindustry.jar
         '';
       };
     };

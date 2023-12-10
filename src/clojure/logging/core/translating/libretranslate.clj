@@ -1,7 +1,7 @@
 (ns logging.core.translating.libretranslate
   "Libretranslate wrapper."
-  (:require [clojure.data.json :as json]
-            [flatland.ordered.map :refer [ordered-map]]
+  (:require [flatland.ordered.map :refer [ordered-map]]
+            [jsonista.core :as j]
             [logging.util.lambdas :refer [task]]
             [logging.util.log :refer [debug err log warn]]
             [org.httpkit.client :as http])
@@ -34,7 +34,7 @@
          (let [[lvl ret]
                (condp = status
                  200 [Log$LogLevel/debug
-                      ((or callback identity) (json/read-str body :key-fn keyword))]
+                      ((or callback identity) (j/read-value body j/keyword-keys-object-mapper))]
                  400 (do (err "Bad request. Aborting translation.")
                          [Log$LogLevel/err])
                  429 (do
@@ -62,9 +62,9 @@
   (debug "Translating @ to @..." s dst)
   (fetch "/translate"
          {:method :post
-          :body   (json/write-str {:q      s
-                                   :source "auto"
-                                   :target dst}
-                                  :escape-unicode false)
+          :body   (j/write-value-as-string
+                   {:q      s
+                    :source "auto"
+                    :target dst})
           :filter (http/max-body-filter 1024)}
          #(callback (:translatedText %))))

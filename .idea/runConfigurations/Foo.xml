@@ -1,9 +1,13 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Foo" type="JarApplication">
+    <extension name="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.IdeaRunConfigurationExtension">
+      <option name="DIRENV_ENABLED" value="false" />
+      <option name="DIRENV_TRUSTED" value="false" />
+    </extension>
     <option name="JAR_PATH" value="$PROJECT_DIR$/../mindustry-client/desktop/build/libs/Mindustry.jar" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <option name="ALTERNATIVE_JRE_PATH" value="project" />
+    <option name="ALTERNATIVE_JRE_PATH" value="nix-shell" />
     <method v="2" />
   </configuration>
 </component>

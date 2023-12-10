@@ -16,6 +16,12 @@ Successor to the original ExtraLogging, now rewritten in Clojure.
 - Fix log display order (vanilla issue);
 - Various other quality of life improvements.
 
+## Android Support
+
+Android support was dropped from version 2.1.0 onwards because I had to upgrade
+Clojure to 1.9.0+ which is broken on Android. You can still try to use an older
+version, though it's not guaranteed to work.
+
 ---
 
 [1]: Only after the mod is created though\

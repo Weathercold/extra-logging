@@ -1,4 +1,4 @@
-(defproject extra-logging "2.0.2"
+(defproject extra-logging "2.1.0"
   :description "Extra Logging"
   :url "http://github.com/Weathercold/extra-logging"
   :license {:name "GPL-3.0-or-later"
@@ -6,8 +6,8 @@
 
   :repositories {"zelaux" "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
                  "jitpack" "https://www.jitpack.io"}
-  :dependencies [;; This is the last clojure version that works on Android...
-                 [org.clojure/clojure "1.8.0"]
+  :dependencies [[metosin/jsonista "0.3.7"]
+                 [org.clojure/clojure "1.11.1"]
                  [org.clojure/data.json "2.4.0"]
                  [org.flatland/ordered "1.15.11"]
                  [http-kit "2.7.0-alpha1"]

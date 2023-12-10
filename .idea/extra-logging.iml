@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="BuildSystem">
     <option name="buildSystemId" value="LEININGEN" />
-    <option name="displayName" value="extra-logging:2.0.2" />
+    <option name="displayName" value="extra-logging:2.1.0" />
   </component>
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -27,13 +27,17 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clj-commons/pomegranate:1.2.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v143.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:d62ba7f6c3" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:d62ba7f6c3" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:d62ba7f6c3" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:d62ba7f6c3" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:d62ba7f6c3" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v143.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-annotations:2.14.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.14.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-databind:2.14.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.datatype/jackson-datatype-jsr310:2.14.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:v145.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v145.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.github.Anuken/rhino:73a812444ac388ac2d94013b5cadc8f70b7ea027" level="project" />
     <orderEntry type="library" name="Leiningen: com.hypirion/io:0.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
@@ -43,6 +47,7 @@
     <orderEntry type="library" name="Leiningen: javax.inject:1" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen-core:2.10.0" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen:2.10.0" level="project" />
+    <orderEntry type="library" name="Leiningen: metosin/jsonista:0.3.7" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/parsley:0.9.3" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/regex:1.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: nrepl:1.1.0-alpha1" level="project" />
@@ -67,10 +72,12 @@
     <orderEntry type="library" name="Leiningen: org.apache.maven/maven-repository-metadata:3.6.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.maven/maven-resolver-provider:3.6.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojars.trptcolin/sjacket:0.1.1.1" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.11.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.62" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.codec:0.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.json:2.4.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.xml:0.2.0-alpha6" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.3.218" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-component-annotations:1.7.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.codehaus.plexus/plexus-interpolation:1.25" level="project" />

@@ -4,22 +4,26 @@ subtitle: "Debugging utilities and QoLs"
 repo: "Weathercold/extra-logging"
 author: Weathercold
 description: '''
-Adds more debugging features and improvements.
+             Adds more debugging features and improvements.
 
-Features:
-- Fully customizable log messages /w timestamp;
-- Translate chat messages to your language;
-- Change log level;
-- Colorize `[colorname]` in log messages;
-- Log event triggers;
-- Various other QoL improvements.
+             Features:
+             - Fully customizable log messages /w timestamp;
+             - Translate chat messages to your language;
+             - Change log level;
+             - Colorize `[colorname]` in log messages;
+             - Log event triggers;
+             - Various other QoL improvements.
 
-See README.md for more information.
-'''
+             !!! Important !!!
+             Android support was dropped from version 2.1.0 onwards due to technical constraints. You can still try to use an older version, though it's not guaranteed to work.
 
-version: 2.0.2
+             See README.md for more information.
+             '''
+
+version: 2.1.0
 minGameVersion: 143.1
 main: "logging.CljLoader"
-softDependencies: [ "newconsole" ]
+softDependencies: [
+  "newconsole" ]
 java: true
 hidden: true
