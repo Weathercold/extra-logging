@@ -27,30 +27,29 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clj-commons/pomegranate:1.2.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-annotations:2.14.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.14.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-databind:2.14.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.datatype/jackson-datatype-jsr310:2.14.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v145.1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.github.Anuken/rhino:73a812444ac388ac2d94013b5cadc8f70b7ea027" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-annotations:2.15.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.15.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-databind:2.15.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.datatype/jackson-datatype-jsr310:2.15.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arc-core:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/arcnet:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/flabel:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/freetype:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/fx:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Arc/g3d:v146" level="project" />
+    <orderEntry type="library" name="Leiningen: com.github.Anuken.Mindustry/core:v146" level="project" />
     <orderEntry type="library" name="Leiningen: com.hypirion/io:0.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Leiningen: commons-io:2.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: commons-lang:2.6" level="project" />
-    <orderEntry type="library" name="Leiningen: http-kit:2.7.0-alpha1" level="project" />
+    <orderEntry type="library" name="Leiningen: http-kit:2.8.0-beta3" level="project" />
     <orderEntry type="library" name="Leiningen: javax.inject:1" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen-core:2.10.0" level="project" />
     <orderEntry type="library" name="Leiningen: leiningen:2.10.0" level="project" />
-    <orderEntry type="library" name="Leiningen: metosin/jsonista:0.3.7" level="project" />
+    <orderEntry type="library" name="Leiningen: metosin/jsonista:0.3.8" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/parsley:0.9.3" level="project" />
     <orderEntry type="library" name="Leiningen: net.cgrand/regex:1.1.0" level="project" />
-    <orderEntry type="library" name="Leiningen: nrepl:1.1.0-alpha1" level="project" />
+    <orderEntry type="library" name="Leiningen: nrepl:1.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.commons/commons-lang3:3.8.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpclient:4.5.13" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.httpcomponents/httpcore:4.4.15" level="project" />
@@ -75,7 +74,6 @@
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.11.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.62" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.codec:0.1.0" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/data.json:2.4.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.xml:0.2.0-alpha6" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.3.218" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />

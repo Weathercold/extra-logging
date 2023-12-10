@@ -4,17 +4,16 @@
   :license {:name "GPL-3.0-or-later"
             :url  "https://www.gnu.org/licenses/gpl-3.0.txt"}
 
-  :repositories {"zelaux" "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
+  :repositories {"zelaux"  "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
                  "jitpack" "https://www.jitpack.io"}
-  :dependencies [[metosin/jsonista "0.3.7"]
+  :dependencies [[metosin/jsonista "0.3.8"]
                  [org.clojure/clojure "1.11.1"]
-                 [org.clojure/data.json "2.4.0"]
                  [org.flatland/ordered "1.15.11"]
-                 [http-kit "2.7.0-alpha1"]
-                 [nrepl "1.1.0-alpha1"]]
-  :profiles {:user     {:plugins [[lein-kibit "0.1.8"]]}
-             :provided {:dependencies [[com.github.Anuken.Mindustry/core "v145.1"]
-                                       [com.github.Anuken.Arc/arc-core "v145.1"]
+                 [http-kit "2.8.0-beta3"]
+                 [nrepl "1.1.0"]]
+  :profiles {:dev      {:plugins [[lein-kibit "0.1.8"]]}
+             :provided {:dependencies [[com.github.Anuken.Mindustry/core "v146"]
+                                       [com.github.Anuken.Arc/arc-core "v146"]
                                        ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
