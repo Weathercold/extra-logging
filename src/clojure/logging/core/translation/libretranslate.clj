@@ -1,9 +1,9 @@
-(ns logging.core.translating.libretranslate
+(ns logging.core.translation.libretranslate
   "Libretranslate wrapper."
   (:require [flatland.ordered.map :refer [ordered-map]]
             [jsonista.core :as j]
             [logging.util.lambdas :refer [task]]
-            [logging.util.log :refer [debug err log warn]]
+            [logging.util.log :refer [err log warn]]
             [org.httpkit.client :as http])
   (:import (arc.util Log$LogLevel Timer)))
 
@@ -21,7 +21,7 @@
                       "https://libretranslate.de"]
                      (repeatedly #(atom true)))))
 
-(defn- fetch [api & [opts callback]]
+(defn- fetch [api opts callback]
   (if-let [server (some (fn [[k v]] (when @v k)) servers)]
     (http/request
      (merge {:url     (str server api)
@@ -34,7 +34,7 @@
          (let [[lvl ret]
                (condp = status
                  200 [Log$LogLevel/debug
-                      ((or callback identity) (j/read-value body j/keyword-keys-object-mapper))]
+                      (callback (j/read-value body j/keyword-keys-object-mapper))]
                  400 (do (err "Bad request. Aborting translation.")
                          [Log$LogLevel/err])
                  429 (do
@@ -46,11 +46,11 @@
                        [Log$LogLevel/debug @(fetch api opts callback)])
                  500 (do (err "Detection error. Aborting translation.")
                          [Log$LogLevel/err])
-                 :else (do
-                         (err "Unknown error. Disabling translation for this session.")
-                         ;; FIXME: ugly hack to workaround reverse dependency
-                         (dosync (ref-set (:value (resolve 'logging.core.translating/enable-translation)) false))
-                         [Log$LogLevel/err]))]
+                 (do
+                   (err "Unknown error. Disabling translation for this session.")
+                   ;; FIXME: ugly hack to workaround reverse dependency
+                   (dosync (ref-set (:value (resolve 'logging.core.translation/enable)) false))
+                   [Log$LogLevel/err]))]
            (log lvl "Response from @:\n@" url body)
            ret))))
     (warn "No server available. Aborting translation.")))
@@ -59,7 +59,6 @@
   (fetch "/languages" {} #(callback (set (map :code %)))))
 
 (defn translate [s dst callback]
-  (debug "Translating @ to @..." s dst)
   (fetch "/translate"
          {:method :post
           :body   (j/write-value-as-string

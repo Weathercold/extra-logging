@@ -14,7 +14,6 @@
   :profiles {:dev      {:plugins [[lein-kibit "0.1.8"]]}
              :provided {:dependencies [[com.github.Anuken.Mindustry/core "v146"]
                                        [com.github.Anuken.Arc/arc-core "v146"]
-                                       ;; This is for task linting, you can remove this
                                        [leiningen "2.10.0"]]}}
 
   :main nil

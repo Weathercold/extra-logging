@@ -3,11 +3,12 @@
    Note that although all the vars are thread-safe, this mod is largely
    single-threaded like the game itself, so thread-safety is not really a
    concern. (why did I use refs then)"
-  (:require (logging.core [events-log :as events-log]
+  (:require (logging.core [event-logging :as elog]
                           [log-handler :as log-handler]
                           [repl :as repl]
                           [setting :refer [set-setting]]
-                          [translating :as tl])
+                          [translation :as tl])
+            [logging.core.translation.deepl :as deepl]
             (logging.util [lambdas :refer [cons1 s-proc]]
                           [log :as log]
                           [task-queue :as tq]))
@@ -56,13 +57,14 @@
     (text-pref repl/port)
 
     (add-category "extra-eventlogging")
-    (check-pref events-log/enable)
-    (slider-pref events-log/log-level 0 4
+    (check-pref elog/enable)
+    (slider-pref elog/log-level 0 4
                  (s-proc #(.name ^Enum (nth (Log$LogLevel/values) %))))
-    (area-pref events-log/listening-events)
+    (area-pref elog/listening-events)
 
     (add-category "extra-translation")
-    (check-pref tl/enable-translation)))
+    (check-pref tl/enable)
+    (text-pref deepl/api-key)))
 
 (defn refresh! []
   (dosync
@@ -80,11 +82,12 @@
           repl/address
           repl/port
 
-          events-log/enable
-          events-log/log-level
-          events-log/listening-events
+          elog/enable
+          elog/log-level
+          elog/listening-events
 
-          tl/enable-translation]))
+          tl/enable
+          deepl/api-key]))
   (tq/exec))
 
 (defn -init []

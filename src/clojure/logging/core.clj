@@ -1,9 +1,9 @@
 (ns logging.core
-  (:require (logging.core [events-log :as events-log]
+  (:require (logging.core [event-logging :as elog]
                           [log-handler :as log-handler]
                           [repl :as repl]
                           [settings :as settings]
-                          [translating :as tl])
+                          [translation :as tl])
             [logging.util.lambdas :refer [consfn]]
             [logging.util.log :refer [debug]])
   (:import (arc Events)
@@ -15,7 +15,7 @@
   (log-handler/-main)
   (debug "Creating mod")
   (repl/-main)
-  (events-log/-main)
+  (elog/-main)
   (Events/on EventType$DisposeEvent (consfn [_] (shutdown-agents))))
 
 (defn -init []

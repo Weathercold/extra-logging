@@ -15,12 +15,12 @@
 
 (defmulti log
   (fn [lvl & [a b]]
-    (if (and (= lvl (Log$LogLevel/debug)) (not @enable-meta-debugging))
-      :noop
-      (cond
-        (instance? String a) (if (instance? Throwable b) :strth :format)
-        (instance? Throwable a) :th
-        :else :trace))))
+    (cond
+      (and (= lvl Log$LogLevel/debug) (not @enable-meta-debugging)) :noop
+      (instance? String a) (if (instance? Throwable b) :strth
+                                                       :format)
+      (instance? Throwable a) :th
+      :else :trace)))
 
 (defmethod log :format [^Log$LogLevel lvl ^String text & args]
   (if (str/starts-with? text "@")

@@ -1,4 +1,5 @@
-(ns logging.core.events-log
+(ns logging.core.event-logging
+  "Require as elog."
   (:require [clojure.string :as str]
             [logging.core.setting :refer [defsetting]]
             [logging.util.lambdas :refer [consfn]]
