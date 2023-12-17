@@ -20,7 +20,7 @@ description: '''
              See README.md for more information.
              '''
 
-version: 2.1.0
+version: 2.2.0
 minGameVersion: 143.1
 main: "logging.CljLoader"
 softDependencies: [
